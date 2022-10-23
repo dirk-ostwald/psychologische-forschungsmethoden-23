@@ -1,0 +1,682 @@
+---
+fontsize: 8pt
+bibliography: 1_Referenzen.bib
+citation_package: natbib
+output:
+  beamer_presentation:
+    keep_tex: true
+    includes:
+      in_header: 1_header.tex
+---
+
+```{r, include = F}
+source("1_R_common.R")
+```
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("1_Abbildungen/pfm_1_otto.png")
+```
+
+\vspace{2mm}
+
+\Large
+Psychologische Forschungsmethoden
+\vspace{6mm}
+
+\normalsize
+BSc Philosophie-Neurowissenschaften-Kognition WiSe 2022/23
+
+BSc Psychologie WiSe 2022/23
+
+\large
+\vspace{6mm}
+Prof. Dr. Dirk Ostwald
+
+# Formalia {.t}
+\vspace{1mm}
+\textcolor{darkblue}{Vorläufige Vorlesungsübersicht}
+\vspace{2mm}
+
+\small
+\center
+\footnotesize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lll}
+Datum        & Einheit                       & Thema				                                    \\\hline
+13.10.2022   & Formalia                      & (0) Formalia                                     \\
+20.10.2022   & Psychologische Wissenschaft   & (1) Wissenschaft                                 \\
+27.10.2022   & Psychologische Wissenschaft   & (2) Psychologische Forschung    	                \\
+03.11.2022   & Psychologische Wissenschaft   & (3) Psychologische Daten                         \\
+10.11.2022   & Messtheorie                   & (4) Relationen                                   \\
+17.11.2022   & Messtheorie                   & (5) Messen, Skalen, Bedeutsamkeit                \\
+24.11.2022   & Messtheorie                   & (7) Extensives Messen                            \\
+01.12.2022   & Messtheorie                   & (8) Ordinal-, Extensiv, und Differenzmessungen   \\
+08.12.2022   & Messtheorie                   & (9) Praktische Messtheorie                       \\
+15.12.2022   & Stichprobentheorie            & (10) Grundlagen                                  \\
+05.01.2023   & Stichprobentheorie            & (11) Stratifizierte Stichproben                  \\
+12.01.2023   & Stichprobentheorie            & (12) Cluster Stichproben                         \\
+19.01.2023   & Quasiexperimentelle Methoden  & (13) Grundlagen                                  \\
+26.01.2023   & Quasiexperimentelle Methoden  & (14) Propensity Scores                           \\\hline
+Feb  2023    & Klausurtermin                 &                                                  \\
+Juli 2023    & Klausurwiederholungstermin    &
+\end{tabular}
+
+
+
+#  {.plain}
+
+\vfill
+\center
+\huge
+\textcolor{black}{(1) Wissenschaft}
+\vfill
+
+#
+\vfill
+\setstretch{3}
+\Large
+
+Wissenschaft
+
+Theorien, Hypothesen, Experimente
+
+Variablen und Operationalisierung
+
+Selbstkontrollfragen
+
+
+#
+\vfill
+\setstretch{3}
+\Large
+
+**Wissenschaft**
+
+Theorien, Hypothesen, Experimente
+
+Variablen und Operationalisierung
+
+Selbstkontrollfragen
+
+
+# Wissenschaft
+
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("1_Abbildungen/pfm_1_wissenschaft_definition.pdf")
+```
+
+# Wissenschaft
+
+\setstretch{1.3}
+\textcolor{darkblue}{Naturwissenschaften $\vert$ Science}
+
+* Empirische Erforschung der Natur mit dem Ziel, Regelmäßigkeiten zu erkennen
+* Quantitatives Beobachten, messen, analysieren des Verhaltens der Natur
+* Grundlage zur Nutzbarmachung der Natur in den Ingeniuersdisziplinen
+* Physik, Chemie, Biologie, Medizin, \textcolor{darkblue}{Psychologie}, Geologie, etc.
+
+\textcolor{darkblue}{Geisteswissenschaften $\vert$ Humanities}
+
+* Analytische Erforschung menschlicher Kultur
+* Qualitative Sinnsuche, informelle Kritik, Spekulation
+* Philosophie, Theologie, Geschichtswissenschaft, Literaturwissenschaft, etc.
+* Naturwissenschaftliche Theoriebildung
+
+\textcolor{darkblue}{Formalwissenschaften $\vert$ Formal Sciences}
+
+* Analyse formaler Systeme
+* Sprachwerkzeuge
+* Mathematik, Logik, theoretische Informatik, Rechtswissenschaft, etc.
+* Naturwissenschaftliche Theoriebildung
+
+
+# Wissenschaft
+
+\setstretch{1.1}
+\textcolor{darkblue}{Prinzipien der Erkenntnisgewinnung}
+\small
+
+Prinzip der Intuition
+
+* Unmittelbare Eingebung
+* Ökonomisch, aber risikobehaftet
+
+Prinzip der Autorität
+
+* Übernahme von Erkenntnissen von Autoritäten (Expert:innen)
+* Ökonomisch, aber risikobehaftet
+
+Prinzip der Vernunft
+
+* Erkenntnisgewinn in der Theorie nach formalen Regeln
+* Intersubjektiv, aber modellbasiert
+
+Prinzip der Erfahrung
+
+* Beobachtung und Experiment
+* Intersubjektiv, aber *perse* unstrukturiert
+
+\vspace{1mm}
+\center
+\textit{\textcolor{darkblue}{``Theorie ohne Erfahrung ist lediglich intellektuelles Spiel, Erfahrung ohne Theorie ist blind.''}}
+
+\flushright{\textit{\textcolor{darkblue}{nach Immanuel Kant (vielleicht)}}}
+
+
+# Wissenschaft
+
+```{r, echo = FALSE, out.width = "95%"}
+knitr::include_graphics("1_Abbildungen/pfm_1_wissenschaft_prozess.pdf")
+```
+
+# Wissenschaft
+
+```{r, echo = F, eval = F}
+graphics.off()
+fdir        =  file.path(getwd(), "1_Abbildungen")
+
+# Definitionen
+res       = 1e1                                                                  # domain resolution
+tmax      = 5                                                                    # maximal timepoint
+x         = cbind(matrix(seq(0,tmax, len = res), nrow = res))                    # time
+fx        = cbind(matrix(x^2) ,                                                  # f(t) := t^2 + \varepsilon
+                  matrix(x^2))                                                   # f(t) := t^2
+
+# Visualisierung
+dev.new()
+par(
+family     = "sans",
+bty        = "l",
+lwd        = 1,
+las        = 1,
+mgp        = c(2,1,0),
+cex        = 1.3
+)
+matplot(
+x,
+fx,
+type       = c("p", "l"),
+pch        = c(16,1) ,
+lty        = 1,
+lwd        = c(3,1),
+col        = c("black", "black"),
+ylab       = "Position [cm] ",
+xlab       = "Zeit [s]",
+)
+grid()
+
+dev.copy2pdf(                                                                    # export to PDF
+    file   = file.path(fdir, "pfm_1_freierfall.pdf"),                           # filename
+    width  = 5,                                                                 # PDF width
+    height = 5                                                                   # PDF height
+)
+```
+
+
+```{r, echo = F, eval = F}
+graphics.off()
+fdir        =  file.path(getwd(), "1_Abbildungen")
+
+# Definitionen
+res       = 1e1                                                                  # domain resolution
+tmax      = 5                                                                    # time maximum
+x         = cbind(matrix(seq(0,tmax, len = res), nrow = res))                    # time
+fx        = cbind(matrix(x^2) +  2*rnorm(res) ,                                    # f(t)  := t^2 + \varepsilon
+                  matrix(x^2))                                                   # f(t) := t^2
+
+# Visualisierung
+dev.new()
+par(
+family     = "sans",
+bty        = "l",
+lwd        = 1,
+las        = 1,
+mgp        = c(2,1,0),
+cex        = 1.3
+)
+matplot(
+x,
+fx,
+type       = c("p", "l"),
+pch        = c(16,1) ,
+lty        = 1,
+lwd        = c(3,1),
+col        = c("black", "black"),
+ylab       = "Position [cm] ",
+xlab       = "Zeit [s]",
+)
+grid()
+
+dev.copy2pdf(                                                                    # export to PDF
+    file   = file.path(fdir, "pfm_1_freierfall_noise.pdf"),                     # filename
+    width  = 5,                                                                  # PDF width
+    height = 5                                                                   # PDF height
+)
+```
+
+
+```{r, echo = FALSE, out.width = "95%"}
+knitr::include_graphics("1_Abbildungen/pfm_1_wissenschaft_prozess_freierfall.pdf")
+```
+
+# Wissenschaft
+
+```{r, echo = FALSE, out.width = "95%"}
+knitr::include_graphics("1_Abbildungen/pfm_1_wissenschaft_prozess_freierfall_noise.pdf")
+```
+
+
+#
+\vfill
+\setstretch{3}
+\Large
+
+Wissenschaft
+
+**Theorien, Hypothesen, Experimente**
+
+Variablen und Operationalisierung
+
+Selbstkontrollfragen
+
+
+# Theorien, Hypothesen, Experimente
+\vspace{1mm}
+\setstretch{1.2}
+\textcolor{darkblue}{Theorien}
+
+\small
+"Eine Theorie ist ein Erklärungsmodell, das auf bestimmten Prinzipien basiert.
+Eine Theorie stellt Einzelbeobachtungen in einen Zusammenhang. Mithilfe einer
+Theorie können Verhaltensweisen oder Ereignisse in ein System gebracht und 
+Vorhersagen abgeleitet werden."
+
+\flushright
+@myers_2010
+\vspace{4mm}
+
+\justifying
+"Eine Theorie ist eine geordnete Menge von Konzepten oder Aussagen, die ein
+Phänomen oder eine Gruppe von Phänomenen erklärt."
+
+\flushright
+@gerrig_2020
+\vspace{4mm}
+
+\justifying
+"Eine Theorie ist ein System von Definitionen, Annahmen und Schlussfolgerungen,
+welches einen Ordnungs- und Erklärungsversuch für ein oder mehrere Phänomene 
+darstellt."
+
+\flushright
+@reiss_2012
+
+\justifying
+"Eine Theorie (ein Modell) ist ein System von intuitiv-verbal und mathematisch formulierten 
+Definitionen und Theoremen, die elementare Grundannahmen zu Erklärung eines 
+Phänomens der Wirklichkeit darstellen, das die Herleitung quantitativer, 
+informatisch-implementierbarer Vorhersagen über beobachtbare Daten des Phänomens 
+ermöglicht."
+
+\flushright
+Ostwald (2021)
+
+
+# Theorien, Hypothesen, Experimente
+\textcolor{darkblue}{Theorien und Modelle}
+\small
+\setstretch{1.6}
+
+Psycholog:innen unterscheiden manchmal zwischen den Begriffen "Theorie" und "Modell" 
+
+* "Nicht selten sind Modelle Bestandteile von Theorien"
+* "Die allgemeinen  theoretischen Prinzipien sind dann durch ein Modell repräsentiert"
+* "Man unterscheidet Mathematische Modelle, Computermodelle, ..."
+
+\flushright
+(vgl. @reiss_2012, S. 34 - 37)
+
+\justifying
+Psycholog:innen denken wohl, dass es Theorien auch ohne Modelle gibt (oder so).
+
+Psycholog:innen haben meist keine Erfahrung mit mathematischer oder informatischer Modellbildung.
+
+$\Rightarrow$ Eine Unterscheidung zwischen Theorie und Modell ist nicht zielführend.
+
+$\Rightarrow$ Mathematische und informatische Modellbildung ist für naturwissenschaftliche Arbeit notwendig.
+
+\large
+\center
+Modell = Theorie und Theorie = Modell
+
+
+# Theorien, Hypothesen, Experimente
+\textcolor{darkblue}{Hypothesen}
+\small
+
+"Eine Hypothese ist eine überprüfbare Vorhersage, die aus einer Theorie abgeleitet wird."
+
+\flushright
+@myers_2010
+\vspace{2mm}
+
+\justifying
+"Eine Hypothese ist eine vorläufige und prüfbare Erklärung der Beziehung zwischen
+zwei oder meheren Ereignissen oder Variablen; oft als Vorhersage formuliert, dass
+bestimmte Ereignisse aufgrund spezifischer Bedingungen eintreten werden.
+
+\flushright
+@gerrig_2020
+\vspace{2mm}
+
+\justifying
+"Eine Hypothese ist eine experimentell zu prüfende Tatsachenbehauptung bzw. 
+präzise Angabe über die Art der erwarteten Abhängigkeitsbeziehung. Sie enthält
+die exakte Festlegung der variierten Bedingungen und der erwarteten Veränderungen, 
+d.h. eine möglichst präzise Aussage (Vorhersage) über die empirische Beziehung
+zwischen Ereignissen"
+
+\flushright
+@reiss_2012
+
+
+# Theorien, Hypothesen, Experimente
+\textcolor{darkblue}{Hypothese und Statistische Hypothese}
+
+\small
+
+Psycholog:innen verwechseln oft die Begriffe "Hypothese" und "Statistische Hypothese".
+
+$\quad\Rightarrow$  Der Begriff "Hypothese" und der Begriff der "Statistischen Hypothese" sind nicht gleich.
+
+* \justifying "Hypothese" meint hier zunächst etwas wie "aus der Theorie abgeleitete Datenvorhersage".
+* Eine "Statistische Hypothese" (Nullhypothese, Alternativhypothese) ist eine 
+Aussage über die Lage des wahren, aber unbekannten, Parameters im Parameterraum 
+eines statistischen Modells.
+
+Hypothesen können manchmal als Statistische Hypothesen formuliert werden.
+
+$\quad\Rightarrow$ Hypothesen müssen nicht als Statistische Hypothesen formuliert werden.
+
+$\quad\Rightarrow$ Es gibt mehr datenanalytische Verfahren als Frequentistisches Hypothesentesten.
+
+Die Annahme oder Ablehnung von Statistischen Hypothesen sind Quantifizierungen 
+von Unsicherheit, keine abschließenden binären Urteile. Keine Hypothese wird 
+sich jemals als absolut "falsch" oder absolut "richtig" erweisen.
+
+# Theorien, Hypothesen, Experimente
+\textcolor{darkblue}{Probabilistische Datenvorhersage statt Hypothese}
+\small
+\setstretch{1.3}
+
+Der von Psycholog:innen propagierte Hypothesenfetisch ist problematisch:
+
+\begin{itemize}
+\item Verwechselung von Hypothesen und Statistischen Hypothesen
+\item Abwertung wichtiger naturwissenschaftlicher Beiträge wie zum Beispiel
+\begin{itemize}
+\begin{small}
+\item[$\circ$] (Mathematische) Modellentwicklung und (analytische/simulierende) Modellvalidation
+\item[$\circ$] Datenerhebung, Datenaufbereitung, Datenbereitstellung
+\item[$\circ$] Exploratorisch-charakterisierende Forschungsprojekte
+\end{small}
+\end{itemize}
+\end{itemize}
+
+Der Hypothesenfetisch hat die Qualität (psychologischer) Forschung gemindert:
+
+* p-Hacking: Datenselektion bis zum Ablehnen der (statistischen) Nullhypothese
+* HARKING: Hypothesizing After Results are Known (Pseudohypothesen)
+
+Entscheidend für das naturwissenschafltiche Paradigma ist es, dass aus Theorien 
+quantitative Vorhersagen beobachtbarer Daten abgeleitet werden, deren 
+explanatorische Unsicherheit probabilistisch quantifiziert werden kann und die
+Theorievergleiche ermöglicht.
+
+$\Rightarrow$ An die Stelle des "Hypothesentestens" sollte das "Theorievergleichen" treten.
+
+
+# Theorien, Hypothesen, Experimente
+\textcolor{darkblue}{Experimente}
+\small
+
+"Ein Experiment ist eine Untersuchung, bei welcher Untersuchungsleitende 
+aktiv und gezielt eine Intervention durchführen, um die Effekte der Intervention
+zu beobachten"
+
+\flushright
+@shadish_2001
+\vspace{2mm}
+
+\justifying
+"Ein Experiment ist eine empirische Untersuchung, bei der gezielt bestimmte 
+Bedingungen (Stufen der *unabhängigen Variable*) hergestellt werden und in 
+ihren Auswirkungen auf ausgewählte *abhängige Variablen* beobachtet werden".
+
+\flushright
+@bortz_2006
+\vspace{2mm}
+
+\justifying
+"Ein Experiment ist ein systematischer Beobachtungsvorgang, aufgrund dessen der
+Versuchsleiter (sic) das jeweils interessierende Phänomen planmäßig erzeugt und 
+variiert sowie gleichzeitig systematische und/oder unsystematische Störfaktoren
+durch hierfür geeignete Techniken kontrolliert"
+
+\flushright
+@reiss_2012
+
+# Theorien, Hypothesen, Experimente
+\textcolor{darkblue}{Experimente}
+\vspace{5mm}
+\setstretch{1.7}
+
+\begin{minipage}{.3\linewidth}
+\begin{center}
+\includegraphics[scale=1]{1_Abbildungen/pfm_1_wundt.jpg}
+
+\footnotesize
+Willhelm Wundt (1832 - 1920)
+
+\end{center}
+\end{minipage}
+\hspace{7mm}
+\begin{minipage}{.7\linewidth}
+\vspace{-5mm}
+\begin{large}
+Experimentkriterien nach Wundt
+\vspace{1mm}
+\begin{itemize}
+\itemsep2mm
+\item Willkürlichkeit
+\item Variierbarkeit
+\item Wiederholbarkeit
+\end{itemize}
+\end{large}
+\end{minipage}
+\vspace{.7cm}
+
+# Theorien, Hypothesen, Experimente
+\textcolor{darkblue}{Experimente vs. Quasiexperimente vs. Korrelationsstudien}
+
+Experiment
+
+* Randomisierte kontrollierte Studie
+* Die Untersuchungseinheiten werden den Versuchsbedingungen zufällig zugeordnet
+* Beispiel: Online Psychotherapie vs. Klassische Psychotherapie bei Depression
+
+\normalsize
+Quasiexperiment
+
+* Nicht-randomisierte kontrollierte Studie
+* Untersuchung natürlich bzw. bereits bestehender Gruppen
+* Beispiel: Online Psychotherapie bei Depression vs. Schizophrenie
+
+\normalsize
+Korrelationsstudie
+
+* Nicht-randomisierte, nicht kontrollierte Studie
+* Beobachtungsstudie ohne Intervention
+* Beispiel: Analyse von Paneldaten
+
+# Theorien, Hypothesen, Experimente
+\textcolor{darkblue}{Datenerhebung statt Experiment}
+\small
+\setstretch{1.3}
+
+Der von (Experimental)Psycholog:innen propagierte Experimentenfetisch ist problematisch:
+
+* Abwertung anderer wichtiger naturwissenschaftlicher Beiträge
+* Fokus auf experimentelles Design anstatt integrierter Betrachtung von Design und Analyse
+* Es gibt keinen prinzipiellen Unterschied zwischen "Hypothesentests" und "Korrelation" 
+* Experimentaldatenbesitzgier verhindert wissenschaftlichen Fortschritt
+
+\vspace{1mm}
+
+Datenerhebungen finden (mindestens) in einem zweidimensionalen Erhebungsraum statt
+
+\center
+Holistisch
+
+$\Uparrow$
+
+$\,\,\,$ Kontrolliert $\Leftarrow \quad \Rightarrow$ Unkontrolliert 
+
+$\Downarrow$
+
+Reduktionistisch
+
+Entscheidend ist die kritische Evaluation der Lage einer Datenerhebung in diesem Kontinuum
+
+\center
+Niemand sagt mehr "Experiment", jeder sagt "Studie" heutzutage.
+
+#
+\vfill
+\setstretch{3}
+\Large
+
+Wissenschaft
+
+Theorien, Hypothesen, Experimente
+
+**Variablen und Operationalisierung**
+
+Selbstkontrollfragen
+
+# Variablen und Operationalisierung
+
+
+\textcolor{darkblue}{Variable}
+
+Eine Variable ist etwas, das durch Veränderlichkeit charakterisiert ist.
+\vspace{5mm}
+
+\textcolor{darkblue}{Konstrukt}
+
+Ein Konstrukt ist ein in der Theorie generierter Erklärungsbegriff, der sich nur
+indirekt und unter Zuhilfenahme operationaler Definitionen empirisch erfassen lässt.
+\vspace{5mm}
+
+\textcolor{darkblue}{Operationalisieren}
+
+Operationalisieren bezeichnet den Prozess der Umsetzung eines
+Konstrukts in eine empirisch messbare Variable.
+
+\vspace{5mm}
+\footnotesize
+\flushright
+@reiss_2012
+
+# Variablen und Operationalisierung
+\textcolor{darkblue}{Unabhängige Variable (UV)}
+
+Etwas, das in einer Studie systematisch variiert wird, um seine Auswirkung
+auf eine oder mehrere abhängige Variable(n) zu untersuchen.
+\vspace{3mm}
+
+\textcolor{darkblue}{Abhängige Variable (AV)}
+
+Etwas, das in einer Studie erfasst wird, um zu überprüfen, wie sich systematisch
+variierte unabhängige Variablen auswirken
+\vspace{3mm}
+
+\textcolor{darkblue}{Beispiele}
+
+\small
+* Einfluss von Alkoholkonsum (UV) auf Reaktionszeiten (AV)
+* Einfluss des Erziehungstils (UV) auf die Kreativität von Kindern (AV)
+* Einfluss der Belohnungsanzahl (UV) auf die Leistungsmotivation (AV)
+* Einfluss des Entscheidungskontext (UV) auf das Entscheidungsverhalten (AV)
+
+# Variablen und Operationalisierung
+\textcolor{darkblue}{Diskrete Variablen}
+
+Diskrete (kategoriale) Variablen sind Variablen, die nur eine endliche Anzahl
+an verschiedenen Werten annehmen und meist durch ganze Zahlen repräsentiert sind.
+\vspace{4mm}
+
+\textcolor{darkblue}{Kontinuierliche Variablen}
+
+Kontinuierliche Variablen sind Variablen, die unendlich viele Werte annehmen
+können und meist durch die reellen Zahlen repräsentiert sind.
+\vspace{4mm}
+
+\textcolor{darkblue}{Einordnung einer Variable als diskret oder kontinuierlich ist eine Modellierungsannahme}
+
+\center
+\begin{tabular}{ll}
+Geschlecht        & m/w vs. m/w/d vs. Kontinuum                        \\
+Alter             & Zeit als reelle Zahl vs. 20, 21, 22, ..., 100      \\
+Reaktionszeiten   & Zeit als reelle Zahl vs. floating point numbers
+\end{tabular}
+
+
+# Variablen und Operationalisierung
+\setstretch{2.2}
+\textcolor{darkblue}{Anmerkungen}
+
+Die Begriffsdefinitionen UV und AV sind kontraintuitiv.
+
+Variablentypen sollten nicht mit mathematischen Variablen verwechselt werden.
+
+Alle Variablentypen können als Zufallsvariablen modelliert werden oder auch nicht.
+
+Die Zuteilung messbarer Entitäten zu Variablentypen ist ein subjektiv-kreativer Prozess:
+
+\center
+"One researcher's signal is another researcher's noise."
+
+
+#
+\vfill
+\setstretch{3}
+\Large
+
+Wissenschaft
+
+Theorien, Hypothesen, Experimente
+
+Variablen und Operationalisierung
+
+**Selbstkontrollfragen**
+
+# Selbstkontrollfragen
+\footnotesize
+\setstretch{2}
+1. Diskutieren Sie die Begriffe Naturwissenschaft, Geisteswissenschaft und Formalwissenschaft.
+2. Beschreiben Sie den naturwissenschaftlichen Prozess.
+3. Geben Sie die Definition einer Theorie nach @reiss_2012 wieder.
+4. Geben Sie die Definition einer Theorie nach Ostwald (2021) wieder.
+5. Geben Sie die Definition einer Hypothese nach @reiss_2012 wieder.
+6. Geben Sie die Definition eines Experimentes nach @reiss_2012 wieder.
+7. Nennen und erläutern Sie die Experimentkriterien nach Wundt.
+8. Erläutern Sie die Begriffe Experiment, Quasiexperiment und Korrelationsstudie.
+9. Definieren Sie die Begriffe Variable, Konstrukt, und Operationalisierung nach @reiss_2012.
+10. Definieren Sie die Begriffe Unabhängige Variable und Abhängige Variable.
+11. Definieren Sie die Begriffe Diskrete Variable und Kontinuierliche Variable.
+
+# References
+\footnotesize
