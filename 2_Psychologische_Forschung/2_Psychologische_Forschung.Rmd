@@ -1,0 +1,536 @@
+---
+fontsize: 8pt
+bibliography: 2_Referenzen.bib
+citation_package: natbib
+output:
+  beamer_presentation:
+    keep_tex: true
+    includes:
+      in_header: 2_header.tex
+---
+
+```{r, include = F}
+source("2_R_common.R")
+```
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_otto.png")
+```
+
+\vspace{2mm}
+
+\Large
+Psychologische Forschungsmethoden
+\vspace{6mm}
+
+\normalsize
+BSc Philosophie-Neurowissenschaften-Kognition WiSe 2022/23
+
+BSc Psychologie WiSe 2022/23
+
+\large
+\vspace{6mm}
+Prof. Dr. Dirk Ostwald
+
+#  {.plain}
+
+\vfill
+\center
+\huge
+\textcolor{black}{(2) Psychologische Forschung}
+\vfill
+
+#
+\setstretch{3}
+\large
+
+Einführung
+
+Beispiele grundlagenorientierter psychologischer Forschung
+
+Beispiele anwendungsorientierter psychologischer Forschung
+
+Selbstkontrollfragen
+
+#
+\setstretch{3}
+\large
+
+**Einführung**
+
+Beispiele grundlagenorientierter psychologischer Forschung
+
+Beispiele anwendungsorientierter psychologischer Forschung
+
+Selbstkontrollfragen
+
+# Einführung
+
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_psychologie.pdf")
+```
+
+# Einführung
+
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_wissenschaft_prozess.pdf")
+```
+
+# Einführung
+\large
+Psychologische Datenwissenschaft
+
+```{r, echo = FALSE, out.width = "80%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_psychologische_datenwissenschaft.pdf")
+```
+
+
+# Einführung
+
+\textcolor{darkblue}{Grundlagenforschung}
+\setstretch{1.8}
+\small
+
+* Verstehen der mechanistischen Zusammenhänge eines Gegenstandbereichs.
+* Verstehen, wie und warum etwas funktioniert, wie es funktioniert.
+* Wissensbasierte intuitive Generation neuer mechanistischer Ideen.
+* Quantitative Überprüfung der generierten Ideen im empirischen Kontext.
+* Kommunikation und rationale Diskussion der Ideen und ihres empirischen Supports.
+
+\normalsize
+\textcolor{darkblue}{Anwendungsforschung}
+\small
+
+* Verstehen, welche Form von Intervention ein gewünschtes Ergebnis hervorbringt.
+* Verstehen, wie etwas verändert werden kann ohne notwendig, zu verstehen, wie es funktioniert.
+* Wissensbasierte intuitive Generation neuer Interventionsformen.
+* Quantitative Überprüfung von Interventionen im empirischen Kontext.
+* Kommunikation und rationale Diskussion der Interventionen und ihres empirischen Supports.
+
+
+#
+\setstretch{3}
+\large
+
+Einführung
+
+**Beispiele grundlagenorientierter psychologischer Forschung**
+
+Beispiele anwendungsorientierter psychologischer Forschung
+
+Selbstkontrollfragen
+
+
+# Erklären und Vorhersagen menschlichen Verhaltens
+\textcolor{darkblue}{Erklären und Vorhersagen menschlichen Verhaltens}
+\vspace{2mm}
+
+```{r, echo = FALSE, out.width = "80%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_horvath_abstract.pdf")
+```
+
+\flushright
+\footnotesize
+@horvath_2021
+
+
+# Erklären und Vorhersagen menschlichen Verhalten
+
+\textcolor{darkblue}{Gegenstandsbereich und Phänomen}
+
+\setstretch{1.8}
+
+Menschen müssen oft Entscheidungen unter Unsicherheit treffen
+
+Menschen müssen manchmal informations- und gewinnbringende Handlungen abwägen
+
+```{r, echo = FALSE, out.width = "80%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_horvath_gegenstandsbereich.pdf")
+```
+
+* Wie gehen Menschen dabei vor?
+
+* Wie lernen Menschen in solchen Situationen Entscheidungen zu treffen?
+
+
+\flushright
+\footnotesize
+@horvath_2021
+
+
+# Beispiel
+\textcolor{darkblue}{Experimentelle Simulation}
+\vfill
+Verhaltensdatenaufnahme
+
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_verhaltensdatenaufnahme.pdf")
+```
+\vfill
+
+\flushright
+\footnotesize
+@horvath_2021
+
+# Beispiel
+\textcolor{darkblue}{Experimentelle Simulation}
+\vspace{-2mm}
+
+```{r, echo = FALSE, out.width = "55%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_horvath_experimentelle_simulation.pdf")
+```
+
+\flushright
+\footnotesize
+@horvath_2021
+
+# Erklären und Vorhersagen menschlichen Verhalten
+
+\textcolor{darkblue}{Theorie}
+
+Künstliche Intelligenz - Artificial Agent
+
+\begin{equation*}
+\mbox{M}_{\mbox{\tiny Agent}}
+:= (S,A,R,O,p(s_1^1),p(s_{t+1}^1|s_t^{1}), p^{a_t}(o_t|s_t^1), p^{a_t}(r_t|s_t^1), v, d)
+\end{equation*}
+\vspace{-5mm}
+\begin{itemize}
+\itemsep2mm
+\item Dynamisches handlungsabhängiges generatives Modell
+\vspace{-3mm}
+\begin{equation*}
+p^{a_{1:T}}(s_{1:T}^1,o_{1:T})
+= p(s_1^1) \prod_{t=1}^T p^{a_t}(o_t|s_t^1)p(s_{t+1}^1|s_t^{1})
+\end{equation*}
+\vspace{-5mm}
+\item Handlungsabhängige Zustandsschätzung (Belief State)
+\begin{footnotesize}
+\begin{equation*}
+p^{a_{1:t-1}}(s_t^1|o_{1:t-1})
+= \frac{\sum_{s_{t-1}^1} p(s_t^1|s_{t-1}^1)p^{a_{t-1}}(o_{t-1}|s_{t-1}^1)p^{a_{1:t-2}}(s_{t-1}^1|o_{1:t-2})}
+       {\sum_{s_t^1}\sum_{s_{t-1}^1} p(s_t^1|s_{t-1}^1)p^{a_{t-1}}(o_{t-1}|s_{t-1}^1)p^{a_{1:t-2}}(s_{t-1}^1|o_{1:t-2})}
+\end{equation*}
+\end{footnotesize}
+\end{itemize}
+
+\flushright
+\footnotesize
+@horvath_2021
+
+# Erklären und Vorhersagen menschlichen Verhalten
+
+\textcolor{darkblue}{Theorie}
+
+Künstliche Intelligenz - Artificial Agent
+
+\begin{equation*}
+\mbox{M}_{\mbox{\tiny Agent}}
+:= (S,A,R,O,p(s_1^1),p(s_{t+1}^1|s_t^{1}), p^{a_t}(o_t|s_t^1), p^{a_t}(r_t|s_t^1), v, d)
+\end{equation*}
+\vspace{-5mm}
+
+\begin{itemize}
+\itemsep2mm
+\item Handlungswertungsfunktion
+\begin{equation*}
+v : A \times [0,1] \to \mathbb{R}, (a,b) \mapsto v(a,b)
+\end{equation*}
+\item Entscheidungsfunktion
+\begin{equation*}
+d : \mathbb{R} \to A,  v(\cdot,b) \mapsto d(v(\cdot,b)) := \argmax_{a \in A} v(a,b)
+\end{equation*}
+\end{itemize}
+
+\flushright
+\footnotesize
+@horvath_2021
+
+# Erklären und Vorhersagen menschlichen Verhalten
+
+\textcolor{darkblue}{Theorievarianten}
+
+\small
+\textcolor{darkblue}{\textbf{A1}  $\vert$} Gewinnmaximierender Agent
+\begin{equation*}
+v_{\mbox{\tiny A1}}(a,b)
+:=     b\mathbb{E}_{p^{a}(r_t|s_t^1 = 1)}(r_t)
+ + (1-b)\mathbb{E}_{p^{a}(r_t|s_t^1 = 2)}(r_t)
+\end{equation*}
+$\Rightarrow$ Erwartete Belohung von $a$ unter momentaner Zustandsschätzug $b_t = b$
+
+\textcolor{darkblue}{\textbf{A2} $\vert$}  Informationsmaximierender Agent
+
+\begin{small}
+\begin{equation*}
+v_{\mbox{\tiny A2}}(a,b)
+:=
+\sum_{o_t} p_{a_{1:t-1},a_t = a} (o_t|o_{1:t-1})
+\mbox{KL}\left(p_{a_{t-1},a_t = a}(s_{t+1}^1|o_{1:t-1},o_t) \Vert p_{a_{1:t-1}}(s_t^1|o_{1:t-1}) \right)
+\end{equation*}
+\end{small}
+
+$\Rightarrow$ Erwartete Bayesianische Überaschung von  $a$ unter momentaner Zustandsschätzug $b_t = b$
+
+\textcolor{darkblue}{\textbf{A3} $\vert$}  Gewinn- und informationsmaximierender Agent
+\begin{equation*}
+v_{\mbox{\tiny A3}}(a,b)
+:= \lambda v_{\mbox{\tiny A1}}(a,b) +  (1-\lambda) v_{\mbox{\tiny A2}}(a,b)
+\end{equation*}
+
+$\Rightarrow$ Gewichtete Kombination der beiden Theoriealternativen
+
+\flushright
+\footnotesize
+@horvath_2021
+
+
+# Erklären und Vorhersagen menschlichen Verhalten
+
+\textcolor{darkblue}{Datenvorhersage}
+\vspace{2mm}
+
+```{r, echo = FALSE, out.width = "80%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_horvath_datenvorhersage.pdf")
+```
+
+\flushright
+\footnotesize
+@horvath_2021
+
+# Beispiel
+\textcolor{darkblue}{Datenanalyse}
+
+```{r, echo = FALSE, out.width = "65%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_horvath_datenanalyse.pdf")
+```
+
+\flushright
+\footnotesize
+@horvath_2021
+
+# Entwicklung mechanistischer neuropsychologischer Modelle
+\textcolor{darkblue}{Entwicklung mechanistischer neuropsychologischer Modelle}
+\vspace{2mm}
+```{r, echo = FALSE, out.width = "60%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_gijsen_abstract.pdf")
+```
+\flushright
+\footnotesize
+@gijsen_2021
+
+# Entwicklung mechanistischer neuropsychologischer Modelle
+\vspace{2mm}
+\textcolor{darkblue}{Theorie | The Bayesian Brain Hypothesis}
+\vspace{-2mm}
+```{r, echo = FALSE, out.width = "90%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_bayesian_brain_hypothesis.pdf")
+```
+\vspace{-3mm}
+\flushright
+\footnotesize
+@helmholtz_1867, @friston_2005, @ostwald_2012, @gijsen_2021
+
+# Entwicklung mechanistischer neuropsychologischer Modelle
+\textcolor{darkblue}{Experimentelle Simulation}
+\vfill
+```{r, echo = FALSE, out.width = "70%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_somatosensation_eeg.pdf")
+```
+\vfill
+
+\flushright
+\footnotesize
+@ostwald_2012, @gijsen_2021
+
+# Entwicklung mechanistischer neuropsychologischer Modelle
+\textcolor{darkblue}{Experimentelle Simulation}
+\vfill
+```{r, echo = FALSE, out.width = "70%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_gijsen_experimentelle_simulation.pdf")
+```
+\vfill
+\flushright
+\footnotesize
+@ostwald_2012, @gijsen_2021
+
+# Entwicklung mechanistischer neuropsychologischer Modelle
+\textcolor{darkblue}{Theorie}
+\vspace{-2mm}
+```{r, echo = FALSE, out.width = "55%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_gijsen_theorie.pdf")
+```
+
+\textcolor{darkblue}{Datenvorhersage}
+\vspace{-2mm}
+```{r, echo = FALSE, out.width = "55%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_gijsen_datenvorhersage.pdf")
+```
+
+\flushright
+\footnotesize
+@gijsen_2021
+
+# Entwicklung mechanistischer neuropsychologischer Modelle
+\textcolor{darkblue}{Datenanalyse}
+\vspace{2mm}
+
+```{r, echo = FALSE, out.width = "90%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_gijsen_datenanalyse_1.pdf")
+```
+```{r, echo = FALSE, out.width = "90%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_gijsen_datenanalyse_2.pdf")
+```
+\flushright
+\footnotesize
+@gijsen_2021
+
+
+#
+\setstretch{3}
+\large
+
+Einführung
+
+Beispiele grundlagenorientierter psychologischer Forschung
+
+**Beispiele anwendungsorientierter psychologischer Forschung**
+
+Selbstkontrollfragen
+
+
+# Behandlung psychiatrischer Erkrankungen
+```{r, echo = FALSE, out.width = "60%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_wagner_abstract.pdf")
+```
+
+\flushright
+\footnotesize
+@wagner_2014
+
+
+# Behandlung psychiatrischer Erkrankungen
+
+\textcolor{darkblue}{Evidenzbasierte Evaluation von Psychotherapieformen bei Depression}
+
+\normalsize
+Welche Therapieform ist bei Depression wirksamer?
+
+```{r, echo = FALSE, out.width = "110%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_klinische_forschung.pdf")
+```
+
+# Behandlung psychiatrischer Erkrankungen
+\textcolor{darkblue}{Evidenzbasierte Evaluation von Psychotherapieformen bei Depression}
+
+\normalsize
+Becks Depressions-Inventar (BDI) zur Depressionsdiagnostik
+
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_bdi.pdf")
+```
+
+# Behandlung psychiatrischer Erkrankungen
+\textcolor{darkblue}{Experimentelle Simulation}
+\setstretch{2}
+\small
+
+* Zufällige Zuordnung mittelschwer Depressionserkrankter zu Online vs. Klassisch
+* Im Wesentlichen identisches Behandlungsprotokoll in beiden Gruppen
+  * \small 8 Wochen Kognitive Verhaltenstherapie nach @hautzinger_2021.
+  * Im Online Kontext nur schriftliches Feedback.
+
+\normalsize
+\textcolor{darkblue}{Theorie}
+\small
+
+* Es gibt Evidenz das internet-basierte Interventionen effektiv sind.
+* Es gibt Evidenz das Therapeuten-geleitete effektiver als selbstgeleitete Interventionen sind.
+
+\normalsize
+\textcolor{darkblue}{Datenvorhersage}
+
+\small
+* Die BDI-Differenzen zwischen Prä- und Posttherapie unterscheiden sich nicht.
+
+\flushright
+\footnotesize
+@wagner_2014
+
+# Behandlung psychiatrischer Erkrankungen
+\textcolor{darkblue}{Datenanalyse}
+
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_wagner_datenanalyse.pdf")
+```
+\flushright
+\footnotesize
+@wagner_2014
+
+# Prognose zukünftigen Verhaltens und Handelns durch Big Tech
+\vfill
+\textcolor{darkblue}{Persönlichkeitspsychologie}
+\vspace{2mm}
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_bigtech_parship.png")
+```
+\vfill
+
+# Prognose zukünftigen Verhaltens und Handelns durch Big Tech
+\vfill
+\textcolor{darkblue}{Emotionsforschung}
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_bigtech_facebook_experiment.pdf")
+```
+\vfill
+
+# Prognose zukünftigen Verhaltens und Handelns durch Big Tech
+\vfill
+\textcolor{darkblue}{Selbstkonzeptforschung}
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_bigtech_facebook_files.pdf")
+```
+\vfill
+
+# Prognose zukünftigen Verhaltens und Handelns durch Big Tech
+\vfill
+\textcolor{darkblue}{Kaufentscheidungsverhalten}
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_bigtech_recommender_systems.pdf")
+```
+\vfill
+
+# Prognose zukünftigen Verhaltens und Handelns durch Big Tech
+\vfill
+\textcolor{darkblue}{Sozialverhalten}
+```{r, echo = FALSE, out.width = "90%"}
+knitr::include_graphics("2_Abbildungen/pfm_2_bigtech_sozialpsychologie.pdf")
+```
+\vfill
+
+#
+\setstretch{3}
+\large
+
+Einführung
+
+Beispiele grundlagenorientierter psychologischer Forschung
+
+Beispiele anwendungsorientierter psychologischer Forschung 
+
+**Selbstkontrollfragen**
+
+
+# Selbskontrollfragen
+\small
+\setstretch{3}
+1. Definieren Sie den Begriff Psychologie.
+2. Nennen Sie vier Aspekte psychologischer Wissenschaft.
+3. Erläutern Sie den Begriff der psychologischen Grundlagenforschung.
+4. Erläutern Sie den Begriff der anwendungsorientierten psychologischen Wissenschaft.
+
+
+# Referenzen
+\footnotesize
