@@ -1,0 +1,475 @@
+---
+fontsize: 8pt
+bibliography: 4_Referenzen.bib
+citation_package: natbib
+output:
+  beamer_presentation:
+    keep_tex: true
+    includes:
+      in_header: 4_header.tex
+---
+
+```{r, include = F}
+source("4_R_common.R")
+```
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("4_Abbildungen/pfm_4_otto.png")
+```
+
+\vspace{2mm}
+
+\Large
+Psychologische Forschungsmethoden
+\vspace{6mm}
+
+\normalsize
+BSc Philosophie-Neurowissenschaften-Kognition WiSe 2022/23
+
+BSc Psychologie WiSe 2022/23
+
+\large
+\vspace{6mm}
+Prof. Dr. Dirk Ostwald
+
+#  {.plain}
+
+\vfill
+\center
+\huge
+\textcolor{black}{(4) Einführung Messtheorie}
+\vfill
+
+# Formalia {.t}
+\vspace{1mm}
+\textcolor{darkblue}{Vorläufige Vorlesungsübersicht}
+
+\small
+\center
+\footnotesize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lll}
+Datum        & Einheit                       & Thema				                                           \\\hline
+13.10.2022   & Formalia                      & (0) Formalia                                            \\
+13.10.2022   & Psychologische Wissenschaft   & (1) Wissenschaft                                        \\
+20.10.2022   & Psychologische Wissenschaft   & (2) Grundlagenorientierte psychologische Wissenschaft   \\
+27.10.2022   & Psychologische Wissenschaft   & (3) Anwendungsorientierte psychologische Wissenschaft   \\
+03.11.2022   & Psychologische Wissenschaft   & (4) Psychologische Daten                                \\
+10.11.2022   & Messtheorie                   & (5) Einführung                                          \\
+17.11.2022   & Messtheorie                   & (6) Relationen                                          \\
+24.11.2022   & Messtheorie                   & (7) Grundprobleme                                       \\
+01.12.2022   & Messtheorie                   & (8) Skalenarten                                         \\
+08.12.2022   & Messtheorie                   & (9) Ordinalmessung                                      \\
+15.12.2022   & Messtheorie                   & (10) Extensivmessung                                    \\
+05.01.2023   & Messtheorie                   & (11) Bedeutsamkeit                                      \\
+12.01.2023   & Stichprobentheorie            & (12) Stichprobentheorie                                 \\
+19.01.2023   & Quasiexperimentelle Methoden  & (13) Grundlagen                                         \\
+26.01.2023   & Quasiexperimentelle Methoden  & (14) Propensity Scores                                  \\\hline
+29.03.2023   & Klausurtermin                 & 12:00 – 13:00 Uhr, G16 – H5                             \\
+Juli 2023    & Klausurwiederholungstermin    &
+\end{tabular}
+
+# 
+\Large
+\setstretch{3}
+\vfill
+Überblick
+
+Selbstkontrollfragen
+\vfill
+
+
+# 
+\Large
+\setstretch{3}
+\vfill
+**Überblick**
+
+Selbstkontrollfragen
+\vfill
+
+# Überblick
+\vfill
+```{r, echo = FALSE, out.width = "90%"}
+knitr::include_graphics("4_Abbildungen/pfm_4_wissenschaft.pdf")
+```
+\center
+\vspace{2mm}
+\large
+\textcolor{darkblue}{Wo kommen die Zahlen her?}
+
+# Überblick
+\textcolor{darkblue}{Definitionsversuche}
+
+\small
+\justifying
+"Measurement of magnitudes is, in its most general sense, any method by which a unique
+and reciprocal correspondence is established bdtween all or some of the magnitudes
+of a kind and all or some of the numbers, integral, rational, or real as they may
+be".
+\vspace{-1mm}
+
+\flushright
+@russell_1938
+
+\justifying
+Measurement is "the assigment of numerals to represent properties of material 
+systems other than number, in virtue of the laws governing these properties".
+\vspace{-1mm}
+
+\flushright
+@campbell_1938
+
+\justifying
+"Measurement is the assignment of numerals to objects or events according to rules"
+\vspace{-1mm}
+
+\flushright
+@stevens_1951
+
+\justifying
+"Measurement of a property (...) involves the assignment of numbers to systems to 
+represent that property".
+\vspace{-1mm}
+
+\flushright
+@torgerson_1958
+
+\justifying
+"Measurement has something to do with assigning numbers that correspond to or
+represent or preserve certain observed relations."
+\vspace{-1mm}
+
+\flushright
+@roberts_1984
+
+# Überblick
+\textcolor{darkblue}{Beispiel (1)}
+
+\small
+Temperaturmessung
+
+* \justifying Messen der Temperatur eines Gegenstandes bedeutet, dem Gegenstand eine Zahl
+so zuordnen, dass die empirische Relation "ist wärmer als" in der Welt im Zahlenraum
+erhalten bleibt.
+
+* Sei $M$ die Menge von Objekten und es gelte "$m$ ist wärmer als $n$" für $m,n\in M$, 
+dann und nur dann wenn $m$ als wärmer als $n$ beurteilt wird. Dann möchte man bei der Messung
+der Temperatur von Objekten $m$ und $n$ so mithilfe einer Funktion $f$ Zahlen zuordnen,
+dass gilt
+\begin{equation}
+m \mbox{ ist wärmer als } n \Leftrightarrow f(m) > f(n).
+\end{equation}
+
+* Eine solche Funktion heißt *Thermometer*.
+
+
+# Überblick
+\textcolor{darkblue}{Beispiel (2)}
+
+\small
+Präferenzmessung
+
+* \justifying Messen der Entscheidungsoptionspräferenzen eines Menschen (Lebewesens, Agenten),
+bedeutet diesem Zahlen so zuzuordnen, dass die empirische Relation "wird präferiert über"
+in der Welt im Zahlenraum erhalten bleibt.
+
+* Sei $M$ die Menge von Entscheidungsoptionen und es gelte "$m$ wird präferiert $n$" für $m,n\in M$,
+dann und nur dann wenn $m$ durch einen Menschen (ein Lebewesen, einen Agenten) über $n$ präferiert wird.
+Dann möchte man bei der Messung von Entscheidungsoptionspräferenzen $m$ und $n$ so
+mithilfe einer Funktion $f$ Zahlen zuordnen,
+dass gilt
+\begin{equation}
+m \mbox{ wird präferiert über  } n \Leftrightarrow f(m) > f(n).
+\end{equation}
+
+* Eine solche Funktion heißt *Utility Function (Nutzenfunktion)*.
+
+
+# Überblick
+\textcolor{darkblue}{Beispiel (3)}
+
+\small
+Gewichtsmessung
+
+* \justifying Messen des Gewichts eines Gegenstandes bedeutet, dem Gegenstand eine Zahl
+so zuordnen, dass die empirische Relation "ist schwerer als" in der Welt im Zahlenraum
+erhalten bleibt.
+
+* Sei $M$ die Menge von Objekten und es gelte "$m$ ist schwerer als $n$" für $m,n\in M$,
+dann und nur dann wenn $m$ als schwerer als $n$ beurteilt wird. Dann möchte man bei der Messung
+des Gewichts von Objekten $m$ und $n$ so mithilfe einer Funktion $f$ Zahlen zuordnen,
+dass gilt
+\begin{equation}
+m \mbox{ ist wärmer als } n \Leftrightarrow f(m) > f(n).
+\end{equation}
+
+* Eine solche Funktion heißt *Waage*.
+
+* Weiterhin möchte man bei der Gewichtsmessung (Wiegen) auch sicher stellen, dass
+der Messprozess additiv ist, in dem Sinne, dass wenn man zwei Objekte kombiniert,
+ihr gemeinsames Gewicht der Summe ihrer einzelnen Gewichte entspricht. Formal sei
+$\circ$ die Kombination zweier Objekte (z.B. das Nebeneinanderplatzieren
+in einer Waagschale). Dann soll die Waage nach Möglichkeit auch folgende Eigenschaft
+\begin{equation}
+f(m \mbox{ wird kombiniert mit } n) = f(m \circ n) \Leftrightarrow f(m) + f(b).
+\end{equation}
+
+\flushright
+$\Rightarrow$ Additivität bei empirischen Entscheidungsoptionspräferenzen kann, aber muss nicht, vorliegen.
+
+
+# Überblick
+\setstretch{1.8}
+\textcolor{darkblue}{Repräsentationstheorie des Messens}
+
+* Die Standardtheorie zu Messvorgängen und Inhalt dieser Einführung. 
+
+\textcolor{darkblue}{Qualitatives Relationssystem}
+
+* Eine Menge von Eigenschaften von Objekten in der Realität und ihre Beziehungen. 
+
+\textcolor{darkblue}{Numerisches Relationssystem}
+
+* Eine Mengen von Zahlen und ihre Beziehungen.
+
+\textcolor{darkblue}{Homomorphismus}
+
+* Eine Abbildung, die Beziehungen von Objekteigenschaften im Zahlenraum erhält.
+
+
+# Überblick
+\vfill
+```{r, echo = FALSE, out.width = "90%"}
+knitr::include_graphics("4_Abbildungen/pfm_4_messtheorie.pdf")
+```
+
+# Überblick
+
+Bemerkungen
+
+\small
+* \justifying Messtheorie stellt einen logischen Apparat bereit, um qualitative 
+Relationssysteme sinnvoll in numerische Relationssysteme abbilden zu können, 
+also ein gegebenes qualitatives Relationssystem strutkurerhaltend im Bereich der
+Zahlen zu repräsentieren.
+
+* Messtheorie gibt allerdings insbesondere aber keine Antwort darauf, woher das 
+qualitative Relationssystem kommt und wie es beschaffen ist, welche Art von Relationen für 
+die betrachteten Eigenschaften von Objekten also gelten und welche nicht. 
+
+* Messtheorie in ihrer klassischen Form betrachtet keine praktisch auftretenden
+Messfehler, dass also die gleiche Eigenschaftsausprägung eines Objektes manchmal 
+auf eine Zahl und manchmal auf eine ähnliche, aber andere Zahl abgebildet wird;
+der Messvorgang selbst wird als (deterministische) Abbildung modelliert.
+
+* Sowohl Zufallsvariablen der Wahrscheinlichkeitstheorie als auch Homomorphismen
+  der Messtheorie können als Modelle von Messvorgängen verstanden werden.
+
+# Überblick
+
+\vspace{1mm}
+\textcolor{darkblue}{Skala}
+
+Eine Skala ist die Einheit eines qualitativen Relationssystems, eines numerischen
+Relationssystems und eines Homomorphismus. Die spezielle Form von qualitativen 
+Relationssystem, numerischen Relationssystem und Homomorphismus bestimmt dabei 
+die *Skalenart*.
+
+\vspace{3mm}
+\textcolor{darkblue}{Skalenarten} 
+
+\setstretch{1.6}
+\small
+\begin{tabular}{ll}
+Nominalskala    & Äquivalenzrelationen                                                \\
+Ordinalskala    & Ordnungsrelationen                                                  \\
+Intervallskala  & Ordnungsrelationen mit gleichen Abständen zwischen Skalenpunkten    \\
+Verhältnisskala & Ordnungsrelationen mit gleichen Abständen und empirischem Nullpunkt \\
+\end{tabular}
+
+\flushright
+\footnotesize
+nach @stevens_1946
+
+# Überblick
+\textcolor{darkblue}{Nominalskala}
+
+Definition
+
+\small
+Der Homomorphismus einer Nominalskala ordnet Objekteigenschaften eines qualitativen
+Relationssystems  Zahlen zu, die so geartet sind, dass gleiche Objekteigenschaften 
+gleiche Zahlen und verschiedene Objekteigenschaften verschiedene Zahlen erhalten.
+
+\footnotesize
+\flushright
+nach @bortz_2010
+
+\justifying
+\normalsize
+Eigenschaften
+
+\small
+* Die Zahlen einer Nominalskala sind Namen für Äquivalenzklassen ohne quantitative Bedeutung.
+* Je zwei Objekte des qualitativen und numerischen Relationssytems sind äquivalent oder nicht.
+
+\normalsize
+Beispiel
+
+\small
+Studienfach
+
+* A studiert Psychologie, B studiert Psychologie, C studiert PNK.
+* A und B sind äquivalent, A und C sind nicht äquivalent, B und C sind nicht äquivalent
+* Nominalskala $\{0,1\}$ mit 0 =  Psychologie, 1 =  PNK 
+* A $\mapsto 0$, B $\mapsto 0$, C $\mapsto 1$.
+
+
+# Überblick
+\textcolor{darkblue}{Ordinalskala}
+
+Definition
+
+\small
+Der Homomorphismus einer Ordinalskala ordnet den Objekteigenschaften eines qualitativen 
+Relationssystems Zahlen zu, die so geartet sind, dass von jeweils zwei Objekteigenschaft 
+die stärker ausgeprägte Eigenschaft die größere Zahl erhält.
+
+\footnotesize
+\flushright
+nach @bortz_2010
+
+\justifying
+\normalsize
+Eigenschaften
+
+\small
+* Die Zahlen einer Ordinalskals bilden eine Rangordnung im qualitativen Relationssystem ab.
+* Die Abstände zwischen zwei Rängen müssen nicht numerisch gleich sein.
+
+\normalsize
+Beispiel
+
+\small
+ESC 1974 Plätze
+
+* \footnotesize 1. Platz: ABBA, 2. Platz: Cinquetti, 3. Platz: MacNeal.
+* Ordnungsrelation im qualitativen Relationssytem: ABBA > Cinquetti > MacNeal.
+* Ordinalskala $\{1,2,3\}$ mit 1 = 1. Platz, 2 =  2. Platz, 3 = 3. Platz. 
+* ABBA $\mapsto 1$, Cinquetti $\mapsto 2$, MacNeal $\mapsto 3$.
+* ABER: ABBA = 24 Punkte, Cinquetti = 18 Punkte, MacNeal = 15 Punkte.
+
+# Überblick
+\textcolor{darkblue}{Intervallskala}
+
+Definition
+
+\small
+Der Homomorphismus einer Intervallskala ordnet Objekteigenschaften eines qualitativen 
+Relationssystems Zahlen zu, die so geartet sind, dass die Verhältnisse der Differenzen 
+zwischen je zwei Objekteigenschaften den Verhältnissen der Differenzen zwischen 
+je zwei Zahlen des numerischen Relationssystems entspricht. 
+
+\footnotesize
+\flushright
+nach @bortz_2010
+
+\justifying
+\normalsize
+Beispiele und Eigenschaften
+\footnotesize
+
+* Die Celsius Temperatuskala und die Fahrenheit Temperaturskala sind Intervallskalen
+* Es gilt $T_F = 1.8\cdot T_C + 32$, also z.B. 10°C = 50°F, 20°C = 68°F, 30°C = 86°F.
+* Bei Intervallskalen sind die Verhältnisse von Wertdifferenzen invariant, z.B.
+\begin{equation}
+\frac{30^{\circ}\mbox{C} - 10^{\circ}\mbox{C}}{30^{\circ}\mbox{C} - 20^{\circ}\mbox{C}} = \frac{20^{\circ}\mbox{C}}{10^{\circ}\mbox{C}} = 2 \mbox{ und }
+\frac{86^{\circ}\mbox{F} - 50^{\circ}\mbox{F}}{86^{\circ}\mbox{F} - 68^{\circ}\mbox{F}} = \frac{36^{\circ}\mbox{F}}{18^{\circ}\mbox{F}} = 2.
+\end{equation}
+* Bei Intervallskalen sind die Verhältnisse von Werten allerdings variant, z.B.
+\begin{equation}
+\frac{20^{\circ}\mbox{C}}{10^{\circ}\mbox{C}} = 2.00 \mbox{ und }
+\frac{68^{\circ}\mbox{F}}{50^{\circ}\mbox{F}} = 1.36.
+\end{equation}
+
+
+# Skalenniveaus
+\textcolor{darkblue}{Verhältnisskala}
+
+Definition
+
+\small
+Die Verhältnisskala ordnet den Objekten des qualitativen Relationssytems Zahlen zu, die so
+geartet sind, dass die Verhältnisse zwischen je zwei Merkmalsausprägungen
+den Verhältnissen zwischen je zwei Zahlen der Skala entspricht. Eine Verhältnisskala
+benötigt einen natürlichen Nullpunkt im qualitativen und numerischen Relationssytem.
+\footnotesize
+\flushright
+@bortz_2010
+
+\justifying
+\normalsize
+Beispiele 
+
+* \small Die Kelvin Temperaturskala bildet physikalische Energiezustände auf Zahlen ab.
+* Die Längenskala in Meter bildet die physikalische Länge auf Zahlen ab.
+* Die Kilogrammskala bildet physikalische Zustände auf Zahlen ab.
+
+
+# Überblick
+Literaturempfehlung für ein vertieftes Verständnis
+\vfill
+```{r, echo = FALSE, out.width = "35%"}
+knitr::include_graphics("4_Abbildungen/pfm_4_roberts.pdf")
+```
+\footnotesize
+\flushright
+@roberts_1984
+
+# Überblick
+\setstretch{2}
+Vorlesungseinheiten zur Messtheorie
+
+(4) Einführung Messtheorie
+(5) Relationen
+(6) Grundprobleme
+(7) Skalenarten
+(8) Ordinalmessung 
+(9) Extensivmessung
+(10) Bedeutsamkeit
+
+# 
+\Large
+\setstretch{3}
+\vfill
+Überblick
+
+**Selbstkontrollfragen**
+\vfill
+
+# Selbstkontrollfragen
+\setstretch{2.5}
+\footnotesize
+
+1. Erläutern Sie den Begriff des Messens.
+2. Nennen Sie drei Beispiele für Messungen.
+3. Erläutern Sie den Begriff der Repräsentationstheorie des Messens.
+4. Erläutern Sie den Begriff des qualitativen Relationssystems.
+5. Erläutern Sie den Begriff des numerischen Relationssystems. 
+6. Erläutern Sie den Begriff des Homomorphismus.
+7. Erläutern Sie den Begiff der Skalenart.
+8. Erläutern Sie den Begriff der Nominalskala.
+9. Erläutern Sie den Begriff der Ordinalskala.
+10. Erläutern Sie den Begriff der Intervallskala.
+11. Erläutern Sie den Begriff der Verhältnisskala.
+
+
+
+
+
+
+# Referenzen
+\footnotesize
