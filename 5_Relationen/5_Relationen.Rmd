@@ -1,0 +1,646 @@
+---
+fontsize: 8pt
+bibliography: 5_Referenzen.bib
+citation_package: natbib
+output:
+  beamer_presentation:
+    keep_tex: true
+    includes:
+      in_header: 5_header.tex
+---
+
+```{r, include = F}
+source("5_R_common.R")
+```
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("5_Abbildungen/pfm_5_otto.png")
+```
+
+\vspace{2mm}
+
+\Large
+Psychologische Forschungsmethoden
+\vspace{6mm}
+
+\normalsize
+BSc Philosophie-Neurowissenschaften-Kognition WiSe 2022/23
+
+BSc Psychologie WiSe 2022/23
+
+\large
+\vspace{6mm}
+Prof. Dr. Dirk Ostwald
+
+#  {.plain}
+
+\vfill
+\center
+\huge
+\textcolor{black}{(5) Relationen}
+\vfill
+
+# Überblick
+\vfill
+```{r, echo = FALSE, out.width = "80%"}
+knitr::include_graphics("5_Abbildungen/pfm_5_messtheorie.pdf")
+```
+
+#
+\setstretch{2.5}
+\vfill
+\Large
+Definition
+
+Ausgewählte Eigenschaften
+
+Operationen
+
+Relationssysteme
+
+Selbstkontrollfragen
+\vfill
+
+#
+\setstretch{2.5}
+\vfill
+\Large
+**Definition**
+
+Ausgewählte Eigenschaften
+
+Operationen
+
+Relationssysteme
+
+Selbstkontrollfragen
+\vfill
+
+# Definition
+\footnotesize
+\begin{definition}[Kartesische Produkte]
+\justifying
+$M$ und $N$ seien zwei Mengen. Dann ist das \textit{Kartesische Produkt der Mengen
+$M$ und $N$} die Menge aller geordneten Tupel $(m,n)$ mit $m \in M$ und $n \in N$,
+formal
+\begin{equation}
+M \times N := \{(m,n)|m\in M, n\in N\}
+\end{equation}
+Das Kartesische einer Menge $M$ mit sich selbst wird bezeichnet mit
+\begin{equation}
+M^2 := M \times M
+\end{equation}
+Seien weiterhin $M_1,...,M_n$ Mengen. Dann ist das \textit{Kartesische Produkt
+der Mengen $M_1,...,M_n$} die Menge aller geordneten $n$-Tupel $(m_1,,...,m_n)$
+mit $m_i \in m_i$ für $i = 1,...,n$, formal
+\begin{equation}
+\prod_{i=1}^n M_i := M_1 \times \cdots \times M_n := \{(m_1,...,m_n)|m_i \in M_i \mbox{ für } i = 1,...,n\}.
+\end{equation}
+Das $n$-fache Kartesische Produkt einer Menge $M$ mit sich selbst wird bezeichnet mit
+\begin{equation}
+M^n := \prod_{i=1}^n A := \{(m_1,...,m_n)|m_i \in M \mbox{ für } i = 1,...,n\}.
+\end{equation}
+\end{definition}
+
+# Definition
+\footnotesize
+Beispiele
+
+(1) Es sei $M := \{1,2\}$ und $N := \{1,2,3\}$. Dann ist
+\begin{align}
+\begin{split}
+M \times N
+& := \{(m,n)| m \in \{1,2\}, n \in \{1,2,3\}\}    \\
+& := \{(1,1), (1,2), (1,3), (2,1), (2,2), (2,3)\} \\
+\end{split}
+\end{align}
+(2) Es seien $M_1 := \{a,b\}$, $M_2 := \{c,d\}$ und $M_3 := \{e,f\}$. Dann ist
+\begin{align}
+\begin{split}
+\prod_{i=1}^3 M_i
+& := M_1 \times M_2 \times M_3                                           \\
+& := \{(m_1,m_2,m_3)|m_1 \in M_1, m_2\in M_2, m_3 \in M_3\}              \\
+& := \{(a,c,e),(b,c,e),(a,d,e),(b,d,e),(a,c,f),(b,c,f),(a,d,f),(b,d,f)\}
+\end{split}
+\end{align}
+
+Bemerkungen
+
+* Offenbar gilt $|M_1 \times \cdots \times M_n| := \prod_{i=1}^n |M_i|$.
+* In der Definition von Mengen ist die Reihenfolge der Elemente unerheblich, bei $n$-Tupeln nicht.
+* Für Mengen gilt z.B. $\{1,2\} = \{2,1\}$ oder $\{a,c,e\}$ = $\{c,e,a\}$.
+* Für geordnete Tupel gilt dagegen z.B. $(1,2)\neq (2,1)$ und $(a,c,e) \neq (c,e,a)$.
+
+# Definition
+\footnotesize
+\begin{definition}[$n$-stellige Relation]
+\justifying
+Gegeben seien $n$ Mengen $M_1,...,M_n$. Dann ist eine \textit{$n$-stellige Relation $R$ auf $M_1,...,M_n$}
+definiert als eine Teilmenge des Kartesischen Produkts von $M_1,...,M_n$,
+\begin{equation}
+R \subseteq \prod_{i=1}^n M_i := M_1 \times \cdots \times M_n := \{(m_1,...,m_n)|m_i \in M_i, i = 1,...,n\}.
+\end{equation}
+\end{definition}
+
+Bemerkungen
+
+* Eine $n$-stellige Relation ist eine Menge von geordneten $n$-Tupeln.
+* Für zwei Mengen $M_1$ und $M_2$ ist eine $2$-stellige Relation $R$ eine Menge von geordneten Paaren.
+\begin{equation}
+R = \{(m_1,m_2)|m_1 \in M_1,m_2 \in M_2\} \subset M_1 \times M_2.
+\end{equation}
+* Für drei Mengen $M_1, M_2$ und $M_3$ ist eine $3$-stellige Relation $R$ eine Menge von geordneten Tripeln
+\begin{equation}
+R = \{(m_1,m_2,m_3)|m_1 \in M_1, m_2 \in M_2, m_3 \in M_3\} \subset M_1 \times M_2 \times M_3.
+\end{equation}
+* Die Mengen $M_1,...,M_n$ sind nicht notwendig verschieden.
+* Eine zweistellige Relation auf $M_1 \times M_2$ mit $M_1 = M_2$, also $M_1 \times M_2 = M^2$ heißt \textit{Binärrelation auf $M$}.
+* Wir betrachten in der Folge Binärrelationen genauer.
+
+# Definition
+\small
+\begin{definition}[Binärrelation]
+\justifying
+$M$ sei eine Menge. Dann heißt eine Teilmenge $R$ des Kartesischen Produkts $M \times M$
+eine \textit{Binärrelation auf $M$}. Wenn für ein (geordnetes Paar) $(m,n) \in M \times M$
+gilt, dass $(m \times n) \in R$ ist, so schreiben wir $m\diamond n$ und bezeichnen
+die Binärrelation mit $\diamond$.
+\end{definition}
+
+Bemerkungen
+
+* Es gilt $(m,n) \in R \Leftrightarrow m \diamond n$.
+* In seltenen Fällen schreibt man auch $R(m,n)$ für $(m,n)\in R$.
+
+# Definition
+\small
+Beispiel (1)
+
+\footnotesize
+Es sei $\mathbb{R}$ die Menge der reellen Zahlen. Dann ist die Menge definiert durch
+\begin{equation}
+R := \{(x,y)|x \ge y \mbox{ und } x,y \in \mathbb{R}\} \subset \mathbb{R}
+\end{equation}
+eine Binärrelation auf $\mathbb{R}$. Wir nennen diese Relation die $\ge$ (größer-gleich) Relation.
+\vfill
+\large
+\center
+
+```{r,echo = F, eval = F}
+library(latex2exp)
+graphics.off()
+dev.new()
+par(
+family      = "sans",
+mfcol       = c(1,1),
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(2,1,0),
+xaxs        = "i",
+yaxs        = "i",
+font.main   = 1,
+cex         = 1,
+cex.main    = 1)
+
+plot(
+seq(-2,2,length=1e1),
+seq(-2,2,length=1e1),
+xlim = c(-2,2),
+ylim = c(-2,2),
+type = "l",
+xlab = TeX("$x$"),
+ylab = TeX("$y$"),
+axes = F)
+axis(1, pos=0)
+axis(2, pos=0)
+
+polygon(
+c(-2,2,2),  
+c(-2,-2,2), 
+col=adjustcolor("gray", alpha= .2),
+border = NA)
+ 
+text(-1.2, 1.2, TeX("$x < y"), cex = 1.2)
+text( 1.2,-1.2, TeX("$x > y"), cex = 1.2)
+legend(.5,.5, TeX("$x = y$") , lty = 1,col = "black", bty = "n", cex = 1.2)
+
+fdir = file.path(getwd(), "5_Abbildungen")
+dev.copy2pdf(
+file        = file.path(fdir, "pfm_5_ge.pdf"),
+width       = 4.5,
+height      = 4.5)
+```
+
+```{r, echo = FALSE, out.width = "50%"}
+knitr::include_graphics("5_Abbildungen/pfm_5_ge.pdf")
+```
+\vspace{-5mm}
+\center
+\footnotesize
+$\{(x,y)|x \ge y \mbox{ und } x,y \in \mathbb{R}\} = - \cup$ \textcolor{lightgray}{$\blacksquare$} 
+
+# Definition
+\small
+Beispiel (2)
+
+\footnotesize
+Es sei $M := \{a,b,c\}$ eine Menge. Dann ist
+\begin{equation}
+M \times M = \{(a,a), (a,b), (a,c), (b,a), (b,b), (b,c), (c,a), (c,b), (c,c)\}
+\end{equation}
+Jede Teilmenge von $M \times M$ ist eine Relation auf $M$.
+
+Zum Beispiel ist also
+\begin{equation}
+R := \{(a,a), (b,b), (c,c)\}
+\end{equation}
+eine Relation auf $M$. Man schreibt hier also $a \diamond a$, $b \diamond b$, $c \diamond c$,
+aber auch zum Beispiel $a \cancel{\diamond}b$.
+
+Eine andere Relation auf $M$ ist
+\begin{equation}
+R := \{(a,b), (b,c), (a,c)\}
+\end{equation}
+Man schreibt hier entsprechend $a \diamond b$, $b \diamond c$, $a \diamond c$,
+aber zum Beispiel auch $a \cancel{\diamond}a$.
+
+#
+\setstretch{2.5}
+\vfill
+\Large
+Definition
+
+**Ausgewählte Eigenschaften**
+
+Operationen
+
+Relationssysteme
+
+Selbstkontrollfragen
+\vfill
+
+# Ausgewählte Eigenschaften
+\small
+\begin{definition}[Reflexivität]
+\justifying
+Eine Binärrelation $R$ auf eine Menge $M$ heißt \textit{reflexiv}, wenn für
+jedes $m \in M$ gilt, dass $(m,m)\in R$ ist, wenn also $m \diamond m$ gilt.
+\end{definition}
+
+\footnotesize
+Bemerkungen und Beispiele
+
+* Die $\ge$ Relation auf $\mathbb{R}$ is reflexiv, weil für alle $x \in \mathbb{R}$ gilt, dass $x \ge x$.
+* Für $M := \{a,b\}$ ist
+\begin{equation}
+R := \{(a,a), (a,b), (b,a), (b,b)\}
+\end{equation}
+eine reflexive Relation auf $M$, weil für $a \in M$ und $b \in M$ gilt, dass $(a,a)$ und $(b,b)$ in $R$ sind.
+* Für $M := \{a,b\}$ ist
+\begin{equation}
+R := \{(a,a), (a,b), (b,a)\}
+\end{equation}
+keine reflexive Relation auf $M$, weil $(b,b)\notin R$.
+
+
+# Ausgewählte Eigenschaften
+\footnotesize
+\begin{definition}[Irreflexivität]
+\justifying
+Eine Binärrelation $R$ auf eine Menge $M$ heißt \textit{reflexiv}, wenn für
+jedes $m \in M$ gilt, dass $(m,m)\notin R$ ist, wenn also $m \cancel{\diamond} m$ gilt.
+\end{definition}
+
+Bemerkungen und Beispiele
+
+* Die $>$ Relation auf $\mathbb{R}$ is irreflexiv, denn für kein $x \in \mathbb{R}$ gilt, dass $x > x$.
+* Für $M := \{a,b\}$ ist
+\begin{equation}
+R := \{(a,b), (b,a)\}
+\end{equation}
+eine irreflexive Relation auf $M$, weil für $a \in M$ und $b \in M$ gilt, dass $(a,a)\notin R$ und $(b,b)\notin R$ sind.
+* Irreflexiv und nicht reflexiv sind nicht identisch: eine Relation ist schon dann nicht reflexiv, wenn es nur ein
+$m \in M$ mit $(m,m)\notin R$ gibt, allerdings ist sie nur dann irreflexiv, wenn dies tatsächlich für alle $m \in M$ gilt.
+* Sei zum Beispiel $M := \mathbb{R}^2$ und 
+\begin{equation}
+R := \{(x,y)|y = x^2\}
+\end{equation}
+Dann gilt $(1,1) \in R$, weil $1 = 1^2$, aber $(2,2) \notin R$, weil $2 \neq 2^2$. 
+Also ist $R$ auf $\mathbb{R}^2$ weder reflexiv noch irreflexiv.
+
+# Ausgewählte Eigenschaften
+\small
+\begin{definition}[Symmetrie]
+\justifying
+Eine Binärrelation $R$ auf einer Menge $M$ heißt \textit{symmetrisch}, wenn für alle
+$(m,n)\in R$ folgt, dass auch $(n,m)\in R$ ist, wenn also aus $m \diamond n$ folgt,
+dass $n \diamond n$ gilt.
+\end{definition}
+
+\footnotesize
+Bemerkungen und Beispiele
+
+* Die $\ge$ Relation auf $\mathbb{R}$ ist nicht symmetrisch, weil aus $x \ge y$
+nicht notwendigerweise folgt, dass $y \ge x$: es kann ja auch $x>y$ gelten, dann gilt
+$y \ge x$ aber nicht.
+* Für $M := \{a,b\}$ ist
+\begin{equation}
+R := \{(a,b), (b,a)\}
+\end{equation}
+eine symmetrische Relation auf $M$, weil
+\begin{align}
+\begin{split}
+(a,b) \in R & \Rightarrow (b,a) \in R \\
+(b,a) \in R & \Rightarrow (a,b) \in R \\
+\end{split}
+\end{align}
+* Für $M := \{a,b\}$ ist
+\begin{equation}
+R := \{(a,a), (a,b), (b,b)\}
+\end{equation}
+keine symmetrische Relation auf $M$, weil $(a,b) \in R$, aber $(b,a) \notin R$.
+
+# Ausgewählte Eigenschaften
+\small
+\begin{definition}[Transitivität]
+\justifying
+Eine Binärrelation $R$ auf einer Menge $M$ heißt \textit{transitiv}, wenn für alle
+$m,n\in R$ gilt, dass aus $(m,n)\in R$ und $(n,p)\in R$ folgt, dass $(m,p) \in R$ ist,
+wenn also aus $m \diamond n$ und $n \diamond p$ folgt, dass $m \diamond p$ gilt.
+\end{definition}
+
+\footnotesize
+Beispiele
+
+* Die $\ge$ Relation auf $\mathbb{R}$ ist transitiv, denn aus $x \ge y$ und $y \ge z$ folgt, dass $x \ge z$.
+* Auf $M := \{a,b,c\}$ ist
+\begin{equation}
+R := \{(a,b), (b,c), (a,c)\}
+\end{equation}
+eine transitive Relation, weil neben $(a,b) \in R$ und $(b,c) \in R$ auch $(a,c) \in R$ gilt.
+* Für $M := \{a,b,c\}$ ist
+\begin{equation}
+R := \{(a,b), (b,c), (a,c)\}
+\end{equation}
+keine transitive Relation auf $M$, weil trotz $(a,b) \in R$ und $(b,c) \in R$ nicht $(a,c) \in R$ gilt.
+
+
+# Ausgewählte Eigenschaften
+\small
+\begin{definition}[Negative Transitivität]
+\justifying
+Eine Binärrelation $R$ auf einer Menge $M$ heißt \textit{negativ transitiv}, wenn für alle
+$m,n\in R$ gilt, dass aus $(m,n)\notin R$ und $(n,p)\notin R$ folgt, dass $(m,p) \notin R$ ist,
+wenn also aus $m \cancel{\diamond} n$ und $n \cancel{\diamond} p$ folgt, dass $m \cancel{\diamond} p$ gilt.
+\end{definition}
+
+\footnotesize
+Beispiele
+
+* Die $>$ Relation auf $\mathbb{R}$ ist negativ transitiv, denn aus $x \cancel{>} y$ 
+  (also $x \le y$) und $y \cancel{>} z$ (also  $y \le z$), folgt $x \le z$, also $x \cancel{>} z$.
+* Auf $M := \{a,b,c\}$ ist
+\begin{equation}
+R := \{(a,b), (b,c), (a,c)\}
+\end{equation}
+negativ transitiv, denn hier folgt zum Beispiel aus $(c,b) \notin R$ und $(b,a) \notin R$, dass $(c,a) \notin R$. Zum
+vollständigem Nachweis der negativen Transitität müsste dies für alle möglichen relevanten Paare nachgewiesen werden.
+* Dagegen ist auf $M := \{a,b,c\}$  
+\begin{equation}
+R := \{(a,b), (b,c), (c,a)\}
+\end{equation}
+nicht negativ transitiv, denn trotz $(b,a) \notin R$ und $(a,c) \notin R$ gilt hier $(b,c) \in R$. 
+
+#
+\setstretch{2.5}
+\vfill
+\Large
+Definition
+
+Ausgewählte Eigenschaften
+
+**Operationen**
+
+Relationssysteme
+
+Selbstkontrollfragen
+\vfill
+
+# Operationen
+\small
+\begin{definition}[Relationsdefinition von Funktionen]
+\justifying
+$D$ und $Z$ seien Mengen. Eine Binärrelation $f$ auf $D \times Z$ heißt \textit{Funktion
+(oder Abbildung) von $D$ nach $Z$}, wenn $f$ folgende Eigenschaften hat:
+\begin{enumerate}
+\item[(1)] Für alle $x \in D$ gibt es ein $y \in Z$, so dass $(x,y) \in f$.
+\item[(2)] Wenn $(x,y)\in f$ und $(x,y') \in f$ sind, so folgt $y = y'$.
+\end{enumerate}
+\end{definition}
+\footnotesize
+Bemerkungen
+
+* \justifying Eine Funktion wird hier betrachtet als eine Menge von geordneten Paaren
+\begin{equation}
+f := \{(x,y)|x\in D, y\in Z\} \subseteq D \times Z
+\end{equation}
+* Eigenschaft (1) besagt, dass eine Funktion jedem Element in $D$ mindestens ein Element in $Z$ zuordnet.
+* Eigenschaft (2) besagt, dass eine Funktion jedem Element in $D$ höchstens  ein Element in $Z$ zuordnet.
+* Zusammen besagen (1) und (2) also, dass eine Funktion jedem $x \in D$ genau ein $y \in Z$ zuordnet.
+* Unsere Notation von Funktionen bleibt von der Relationsdefinition von Funktionen unberührt, wir schreiben
+weiterhin $f : D \to Z$ dafür, dass $f$ eine Funktion (Abbildung) von $D$ nach $Z$ ist und bezeichnen das
+zu $x \in D$ eindeutig bestimmte $y \in Z$ als $f(x):=y$.
+* Die Relationsdefinition von Funktionen definiert Funktionen als Mengen, vermeidet den undefinierten
+Begriff der "Vorschrift" und gibt der Mathematik somit eine rein mengentheoretische Grundlage.
+
+# Operationen
+\small
+\begin{definition}[Operation]
+$M$ sei eine Menge. Eine \textit{Operation (oder Verknüpfung)} $\circ$ auf $M$ ist eine
+Funktion der Form
+\begin{equation}
+\circ : N \subseteq M \times M \to M, (m,n) \mapsto \circ((m,n))).
+\end{equation}
+\end{definition}
+\footnotesize
+Bemerkungen
+
+* Die Einschränkung von $M \times M$ auf $N \subseteq M \times M$ dient dem Realitätsanspruch extensiver Strukturen.
+* Siehe dazu auch @krantz_1971, S. 81-82.
+* Im numerischen Kontext ist meist $N = M \times M$.
+
+# Operationen
+\small
+Beispiele
+
+\footnotesize
+$\bullet$ Eine vertraute Operation ist die Addition natürlicher Zahlen
+\begin{equation}
++ : \mathbb{N} \times \mathbb{N} \to \mathbb{N}, (m,n) \mapsto +((m,n)) := m + n.
+\end{equation}
+$\bullet$ Eine andere vertraute Operation ist die Multiplikation ganzer Zahlen,
+\begin{equation}
+\cdot : \mathbb{Z} \times \mathbb{Z} \to \mathbb{Z}, (m,n) \mapsto \cdot((m,n)) := mn.
+\end{equation}
+$\bullet$ Für eine Menge $N$ und die Menge
+\begin{equation}
+M := \{f : N \to N| f \mbox{ ist eine Funktion}\}
+\end{equation}
+$\,\,\,$ ist die Verknüpfung von Funktionen eine Operation auf $M$,
+\begin{equation}
+\circ : M \times M \to M, (f,g) \mapsto \circ((f,g)) := f \circ g \mbox{ mit } (f \circ g)(m) := f(g(m)) \mbox{ für alle } m \in M.
+\end{equation}
+$\bullet$ Eine Operation ist eine 3-stellige Relation $R$ auf einer Menge $M$ der Form
+\begin{equation}
+R = \{(m,n, m\circ n)|m,n,m\circ n \in M\} \subseteq M \times M \times M
+\end{equation}
+$\,\,\,$ Allerdings ist nicht jede 3-stellige Relation $R$ auf einer Menge $M$ eine Operation
+
+
+# Operationen
+\small
+Beispiele (fortgeführt)
+
+\footnotesize
+$\bullet$ Sei zum Beispiel $M := \{1,2,3\}$. Dann entspricht die Operation
+\begin{equation}
+\circ : M \times M \to M,
+(m,n) \mapsto \circ((m,n)) :=
+\begin{cases}
+1 & \mbox{ wenn } a + b \mbox{ gerade ist} \\
+2 & \mbox{ wenn } a + b \mbox{ ungerade ist} \\
+\end{cases}.
+\end{equation}
+$\,\,\,$ der 3-stelligen Relation
+\begin{equation}
+R = \{(1,1,1), (1,2,2), (1,3,1), (2,1,2), (2,2,1), (2,3,2), (3,1,1), (3,2,2), (3,3,1)\}
+\end{equation}
+$\bullet$ Sei zum Beispiel wiederum $M := \{1,2,3\}$ und die 3-stellige Relation $R$ definiert als
+\begin{equation}
+R := \{(1,1,1), (1,2,2), (1,3,1), (2,1,2), (2,2,1), (2,3,2), (3,1,1), (3,2,2), (1,3,2)\}.
+\end{equation}
+$\,\,\,$ Dann gilt sowohl $(1,3,1) \in R$ und $(1,3,2) \in R$, also in Operationschreibweise
+\begin{equation}
+(1,3) \mapsto \circ((1,3)) := 1 \mbox{ und } (1,3) \mapsto \circ((1,3)) := 2.
+\end{equation}
+$\,\,\,$ Dann ist $\circ$ aber keine Funktion, weil eine Funktion jedem Element der Definitionsmenge
+nur höchstens ein Element
+
+$\,\,\,$ der Zielmenge zuordnet und nicht zwei.
+
+#
+\setstretch{2.5}
+\vfill
+\Large
+Definition
+
+Ausgewählte Eigenschaften
+
+Operationen
+
+**Relationssysteme**
+
+Selbstkontrollfragen
+\vfill
+
+# Relationssysteme
+\small
+\begin{definition}[Relationssystem]
+\justifying
+$M$ sei eine Menge, $R_1,...,R_p$ seien Relationen auf $M$ und $\circ_1,...,\circ_q$
+seien Operationen auf $M$. Dann wird das $(1 + p + q)$-Tupel
+\begin{equation}
+\mathcal{M} := (M,R_1,...,R_p, \circ_1,...,\circ_q)
+\end{equation}
+ein \textit{Relationssystem} genannt. Für $M := \mathbb{R}$ heißt ein Relationssystem
+ein \textit{numerisches Relationssystem}. Der \textit{Typ eines Relationssystems}
+ist eine (endliche) Folge $(r_1,...,r_p,q)$ der Länge $p+1$, für die gilt, dass für alle
+$i = 1,...,p$ $r_i$ gleich $\rho$ ist, wenn $R_i$ eine $\rho$-stellige Relation ist.
+\end{definition}
+\footnotesize
+Bemerkungen
+
+* Da $\circ_1,...,\circ_q$ Binärrelationen sind, könne man auch $\mathcal{M} := (M,R_1,...,R_{p+q})$ schreiben. 
+* Der Relationstyp $(2,3,2)$ eines Relationssystems $\mathcal{M}$ besagt, dass auf der Menge 
+$M$ eine 2-stellige und eine 3-stellige Relation, sowie zwei Operationen definiert sind. 
+
+# Relationssystem
+\vspace{2mm}
+\setstretch{1.2}
+\small
+Beispiele für (qualitative) Relationssysteme
+\footnotesize
+
+(1) $M$ sei eine Menge von Objekten und es sei
+\begin{equation}
+R := \{(m,n)| m \mbox{ ist wärmer als } n\} \subseteq  M\times M.
+\end{equation}
+Dann ist $\mathcal{M} := (M,R)$ ein Relationssystem vom Typ $(2,0)$.
+
+(2) $M$ sei eine Menge von Entscheidungsoptionen und es sei
+\begin{equation}
+R := \{(m,n)| m \mbox{ wird präferiert über } n\} \subseteq  M\times M
+\end{equation}
+Dann ist $\mathcal{M} := (M,R)$ ein Relationssystem vom Typ $(2,0)$.
+
+(3) $M$ sei eine Menge von Objekten und es sei
+\begin{equation}
+R := \{(m,n)| m \mbox{ ist schwerer als } n\} \subseteq  M\times M
+\end{equation}
+und
+\begin{equation}
+\circ : M \times M \to M, (m,m) \mapsto \circ((m,n)) := \mbox{Die physische Kombination von } m \mbox{ und } n.
+\end{equation}
+Dann ist $\mathcal{M} := (M,R,\circ)$ ein Relationssystem vom Typ $(2,1)$.
+
+\small
+Beispiele für numerische Relationssysteme
+\footnotesize
+
+(1) $\mathcal{N} := (\mathbb{R},>)$ ist ein numerisches Relationsystem vom Typ (2,0).
+(2) $\mathcal{N} := (\mathbb{R},>,\ge)$ ist ein numerisches Relationsystem vom Typ (2,2,0).
+(3) $\mathcal{N} := (\mathbb{R},>,\ge, +)$ ist ein numerisches Relationsystem vom Typ (2,2,1).
+(4) $\mathcal{N} := (\mathbb{R},>,\ge, +, \cdot)$ ist ein numerisches Relationsystem vom Typ (2,2,2).
+
+#
+\setstretch{2.5}
+\vfill
+\Large
+Definition
+
+Ausgewählte Eigenschaften
+
+Operationen
+
+Relationssysteme
+
+**Selbstkontrollfragen**
+\vfill
+
+# Selbstkontrollfragen
+\setstretch{2}
+
+\footnotesize
+1. Definieren Sie das Kartesische Produkt zweier Mengen.
+2. Definieren Sie das Kartesische Produkt dreier Mengen.
+3. Definieren Sie den Begriff der Binärrelation.
+4. Definieren Sie den Begriff einer dreistelligen Relation.
+5. Erläutern Sie die $\ge$ Relation.
+6. Definieren Sie den Begriff der reflexiven Binrärelation.
+7. Definieren Sie den Begriff der irreflexiven Binrärelation.
+8. Was ist der Unterschied zwischen einer nicht reflexiven und einer irreflexiven Relation?
+9. Definieren Sie den Begriff einer symmetrischen Binärrelation.
+10. Definieren Sie den Begriff einer transitiven Binärrelation.
+11. Definieren Sie den Begriff einer negativ-transitiven Binärrelation.
+12. Geben Sie die Relationsdefinition einer Funktion wieder.
+13. Definieren Sie den Begriff der Operation.
+14. Definieren Sie den Begriff des Relationssystems.
+15. Geben Sie ein Beispiel für ein qualitatives Relationssytem.
+16. Geben Sie ein Beispiel für ein numerisches Relationssystem.
+
+# Referenzen
+\footnotesize
