@@ -1,0 +1,512 @@
+---
+fontsize: 8pt
+bibliography: 6_Referenzen.bib
+citation_package: natbib
+output:
+  beamer_presentation:
+    keep_tex: true
+    includes:
+      in_header: 6_header.tex
+---
+
+```{r, include = F}
+source("6_R_common.R")
+```
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("6_Abbildungen/pfm_6_otto.png")
+```
+
+\vspace{2mm}
+
+\Large
+Psychologische Forschungsmethoden
+\vspace{6mm}
+
+\normalsize
+BSc Philosophie-Neurowissenschaften-Kognition WiSe 2022/23
+
+BSc Psychologie WiSe 2022/23
+
+\large
+\vspace{6mm}
+Prof. Dr. Dirk Ostwald
+
+#
+\vspace{1mm}
+\textcolor{darkblue}{Vorläufige Vorlesungsübersicht}
+
+\small
+\center
+\footnotesize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lll}
+Datum        & Einheit                       & Thema				                                           \\\hline
+13.10.2022   & Formalia                      & (0) Formalia                                            \\
+13.10.2022   & Psychologische Wissenschaft   & (1) Wissenschaft                                        \\
+20.10.2022   & Psychologische Wissenschaft   & (2) Grundlagenorientierte psychologische Wissenschaft   \\
+27.10.2022   & Psychologische Wissenschaft   & (2) Anwendungsorientierte psychologische Wissenschaft   \\
+03.11.2022   & Psychologische Wissenschaft   & (3) Psychologische Daten                                \\
+10.11.2022   & Messtheorie                   & (4) Einführung Messtheorie                              \\
+17.11.2022   & Messtheorie                   & (5) Relationen                                          \\
+24.11.2022   & Messtheorie                   & (6) Grundprobleme der Messtheorie                       \\
+01.12.2022   & Messtheorie                   & (7) Skalenarten                                         \\
+08.12.2022   & Messtheorie                   & (8) Ordinalmessung                                      \\
+15.12.2022   & Messtheorie                   & (9) Extensivmessung                                     \\
+05.01.2023   & Messtheorie                   & (10) Differenzmessung                                   \\
+12.01.2023   & Messtheorie                   & (11) Bedeutsamkeit                                      \\
+19.01.2023   & Messtheorie                   & (12) Psychophysik                                       \\
+26.01.2023   & Messtheorie                   & (13) Likertskalen                                        \\\hline
+29.03.2023   & Klausurtermin                 & 12:00 – 13:00 Uhr, G16 – H5                             \\
+Juli 2023    & Klausurwiederholungstermin    &
+\end{tabular}
+
+
+#  {.plain}
+\vfill
+\center
+\huge
+\textcolor{black}{(6) Grundprobleme der Messtheorie}
+\vfill
+
+#
+\vfill
+\Large
+\setstretch{3}
+Grundidee des Messens
+
+Homomorphismen und Skalen
+
+Repräsentation, Eindeutigkeit, Bedeutsamkeit
+
+Selbstkontrollfragen
+\vfill
+
+#
+\vfill
+\Large
+\setstretch{3}
+**Grundidee des Messens**
+
+Homomorphismen und Skalen
+
+Repräsentation, Eindeutigkeit, Bedeutsamkeit
+
+Selbstkontrollfragen
+\vfill
+
+# Grundidee des Messens
+```{r, echo = FALSE, out.width = "70%"}
+knitr::include_graphics("6_Abbildungen/pfm_6_messtheorie.pdf")
+```
+
+\footnotesize
+\center
+Die Grundidee des Messens ist es, Eigenschaften von Objekten Zahlen so zuzuweisen, dass
+die Relationen der Eigenschaften der Objekte sowie Operationen mit Objekteigenschaften
+im Bereich der Zahlen erhalten bleiben.
+
+# Grundidee des Messens
+\small
+\textcolor{darkblue}{Beispiel (1) Messen von Entscheidungsoptionspräferenzen}
+
+\footnotesize
+\justifying
+Messen der Entscheidungsoptionspräferenzen eines Agenten bedeutet,
+den Entscheidungsoptionen Zahlen so zuzuordnen, dass die qualitative Relation
+"Entscheidungsoption $m$ wird präferiert über Entscheidungsoption $n$" in der
+Realität im Bereich der Zahlen erhalten bleibt.
+
+Sei $M$ die Menge von Entscheidungsoptionen und sei $R$ die Entscheidungsoptionspräferenzrelation,
+d.h. für $m,n \in M$ gelte
+\begin{equation}
+m \mbox{ wird präferiert über } n \Leftrightarrow (m,n) \in R .
+\end{equation}
+Dann möchte man bei der Messung von Entscheidungsoptionspräferenzen $m$ und $n$
+so mithilfe einer Funktion $f$ Zahlen zuordnen, dass gilt
+\begin{equation}
+m \mbox{ wird präferiert über } n \Leftrightarrow (m,n) \in R \Leftrightarrow f(m) > f(n).
+\end{equation}
+Eine solche Funktion heißt dann *Nutzenfunktion (utility function)*.
+
+Das Messen von Entscheidungsoptionspräferenzen wird in der Folge unser Beispiel
+für den Begriff der *Ordinalmessung* und den zugehörigen Begriff der *Ordinalskala* sein.
+
+
+# Grundidee des Messens
+\small
+\textcolor{darkblue}{Beispiel (2) Messen der Masse von Objekten}
+\footnotesize
+
+Messen der Masse eines Objektes bedeutet, den Objekten Zahlen so zuzuordnen, dass die
+qualitative Relation "Objekt $m$ ist schwerer als Objekt $n$" in der Realität im Bereich der
+Zahlen erhalten bleibt. Weiterhin möchte man  beim Messen der Masse eines Objektes
+auch sicherstellen, dass der Messprozess additiv ist, d.h. dass die Masse der
+physischen Kombination zweier Objekte der Summation der Massen der einzelnen
+Objekte entspricht.
+
+Sei $M$ die Menge von Objekten, sei $R$ die Gewichtsvergleichrelation, d.h. für
+$m,n \in M$ gelte
+\begin{equation}
+m \mbox{ ist schwerer als } n \Leftrightarrow (m,n) \in R
+\end{equation}
+und $\circ$ sei die Operation des physischen Kombinierens zweier Objekte, d.h.
+für $m,n \in M$ gelte
+\begin{equation}
+m \mbox{ wird kombiniert mit } n \Leftrightarrow m \circ n.
+\end{equation}
+Dann möchte man bei der Messung der Masse von Objekten $m$ und $n$ so mit Hilfe
+einer Funktion $f$ Zahlen zuordnen, dass gilt
+\begin{equation}
+m \mbox{ ist schwerer als } n \Leftrightarrow (m,n) \in R \Leftrightarrow f(m) > f(n)
+\end{equation}
+und
+\begin{equation}
+f(m \mbox{ wird kombiniert mit } n) \Leftrightarrow f(m \circ n) = f(m) + f(n).
+\end{equation}
+Eine solche Funktion heißt *Waage*.
+
+Das Messen der Masse von Objekten wird in der Folge unser Beispiel für den Begriff
+der *Extensivmessung* und den zugehörigen Begriff der *Verhältnisskala* sein.
+
+
+#
+\vfill
+\Large
+\setstretch{3}
+Grundidee des Messens
+
+**Homomorphismen und Skalen**
+
+Repräsentation, Eindeutigkeit, Bedeutsamkeit
+
+Selbstkontrollfragen
+\vfill
+
+# Homomorphismen und Skalen
+\small
+\begin{definition}[Homomorphismus]
+\justifying
+$\mathcal{M} := (M,R_1,...,R_p, \circ_1, ...,\circ_q)$ und
+$\mathcal{N} := (N,\tilde{R}_1,...,\tilde{R}_p, \tilde{\circ}_1, ...,\tilde{\circ}_q)$
+seien zwei Relationssysteme gleichen Typs. Dann heißt eine Funktion $f : M \to N$
+ein \textit{Homomorphismus von $\mathcal{M}$ nach $\mathcal{N}$}, wenn $f$ folgende
+Eigenschaften hat:
+\begin{itemize}
+\item[(1)] Für alle $i = 1,...,p$ und alle $m_1,...,m_{r_i} \in M$ gilt
+\begin{equation}
+(m_1,...,m_{r_i}) \in R_i \Leftrightarrow (f(m_1),...,f(m_{r_i})) \in \tilde{R}_i.
+\end{equation}
+\item[(2)] Für alle $i = 1,...,q$ und alle $m,n\in M$ gilt
+\begin{equation}
+f(m \circ_i n) = f(m) \tilde{\circ}_i f(n).
+\end{equation}
+\end{itemize}
+Wenn zwischen zwei Relationssystemen $\mathcal{M}$ und $\mathcal{N}$ gleichen Typs
+ein Homomorphismus existiert, dann heißen $\mathcal{M}$ und $\mathcal{N}$ \textit{homomorph}.
+\end{definition}
+
+\begin{definition}[Isomorphismus]
+Ein injektiver Homomorphismus heißt \textit{Isomorphismus}. Wenn zwischen zwei
+Relationssystemen $\mathcal{M}$ und $\mathcal{N}$ gleichen Typs ein Isomorphismus
+existiert, dann heißen $\mathcal{M}$ und $\mathcal{N}$ \textit{isomorph}.
+\end{definition}
+
+
+# Homomorphismen und Skalen
+\footnotesize
+\vspace{1mm}
+Bemerkungen
+\vspace{-1mm}
+
+* \justifying Die Definition eines Homomorphismus basiert auf der Existenz zweier Relationssysteme gleichen Typs.
+* In der Messtheorie ist $\mathcal{M}$ meist ein qualitatives Relationssystem und $\mathcal{N}$ ein numerisches Relationssystem.
+* Eigenschaft (1) besagt, dass wenn ein $r_i$-Tupel von Elementen in $M$ ein
+  Element der $i$ten Relation $R_i$ auf $M$ ist, dann soll das $r_i$-Tupel der durch
+  $f$ transformierten Elemente ein Element der $i$ten Relation $\tilde{R}_i$ auf $N$
+  sein und umgekehrt.
+* Eigenschaft (2) besagt, dass für $i = 1,...,q$ die durch $f$ transfomierte
+  $i$te Verknüpfung zweier  Elemente aus $M$ auf $M$ gleich der $i$ten Verknüpfung
+  der durch $f$ transfomierten  Elemente aus $M$ auf $N$ sein soll.
+* Für einen Isomorphismus gilt neben den Eigenschaften (1) und (2) noch, dass $f$ injektiv ist, also dass für $m,n\in M$ gilt, dass
+\begin{equation}
+m \neq n \Rightarrow f(m) \neq f(n) \mbox{ bzw. } f(m) = f(n) \Rightarrow m = n.
+\end{equation}
+* Die Definition eines Homomorphismus ist für endlich viele Relationen und Operationen auf Mengen formuliert.
+* Im Fall des Messen von Entscheidungsoptionspräferenzen betrachtet man $\mathcal{M} = (M,R)$
+  und $\mathcal{N} = (\mathbb{R},>)$ und fragt mit $p := 1, r_1 := 2$ und $q:=0$
+  dementsprechend nach einer Funktion $f$, für die gilt
+\begin{equation}
+(m,n) \in R \Leftrightarrow f(m) > f(n).
+\end{equation}
+* Im Fall des  Messen der Masse von Objekten betrachtet man $\mathcal{M} = (M,R,\circ)$ 
+  und $\mathcal{N} = (\mathbb{R},>,+)$ und fragt mit $p := 1,r_1 := 2$ und $q:=1$
+  dementsprechend nach einer Funktion $f$, für die gilt
+\begin{equation}
+(m,n) \in R \Leftrightarrow f(m) > f(n)
+\mbox{ und }
+f(m \circ n) = f(m) + f(n).
+\end{equation}
+
+
+# Homomorphismen und Skalen
+\setstretch{1.2}
+\small
+Beispiel
+
+\footnotesize
+Es sei $\mathcal{M} := (M,R)$ das $(2,0)$ Relationssystem mit $M := \{a,b,c,d\}$ und
+\begin{equation}
+R := \{(a,b), (b,c), (a,c), (a,d), (b,d), (c,d)\}
+\end{equation}
+Weiterhin sei $\mathcal{N} := (\mathbb{R},>)$ ein numerisches Relationssystem.
+
+Dann ist
+\begin{equation}
+f : M \to \mathbb{R}, m \mapsto f(m) \mbox{ mit }
+f(a) := 4, f(b) := 3, f(c) := 2, f(d) := 1
+\end{equation}
+ein Homomorphismus von $\mathcal{M}$ nach $\mathcal{N}$, weil
+\begin{align}
+\begin{split}
+(a,b) \in R \Leftrightarrow a \diamond b  & \Leftrightarrow f(a) > f(b) \Leftrightarrow 4 > 3 \Leftrightarrow (4,3) \in\, > \\
+(b,c) \in R \Leftrightarrow b \diamond c  & \Leftrightarrow f(b) > f(c) \Leftrightarrow 3 > 2 \Leftrightarrow (3,2) \in\, > \\
+(a,c) \in R \Leftrightarrow a \diamond c  & \Leftrightarrow f(a) > f(c) \Leftrightarrow 4 > 2 \Leftrightarrow (4,2) \in\, > \\
+(a,d) \in R \Leftrightarrow a \diamond d  & \Leftrightarrow f(a) > f(d) \Leftrightarrow 4 > 1 \Leftrightarrow (4,1) \in\, > \\
+(b,d) \in R \Leftrightarrow b \diamond d  & \Leftrightarrow f(b) > f(d) \Leftrightarrow 3 > 1 \Leftrightarrow (3,1) \in\, > \\
+(c,d) \in R \Leftrightarrow c \diamond d  & \Leftrightarrow f(c) > f(d) \Leftrightarrow 2 > 1 \Leftrightarrow (2,1) \in\, > \\
+\end{split}
+\end{align}
+Für die hier definierten Relationssysteme $\mathcal{M}$ und $\mathcal{M}$ existiert also ein Homomorphismus.
+
+Es ist dementsprechend leicht einzusehen, dass auch
+\begin{equation}
+g : M \to \mathbb{R}, m \mapsto g(m) \mbox{ mit }
+g(a) := 10, g(b) := 4, g(c) := 2, g(d) := 0
+\end{equation}
+ein Homomorphismus von $\mathcal{M}$ nach $\mathcal{N}$ ist. Für die hier definierten
+Relationssysteme $\mathcal{M}$ und $\mathcal{M}$ existiert also sogar mehr als nur ein Homomorphismus.
+
+
+# Homomorphismen und Skalen
+\small
+\begin{definition}[Skala]
+\justifying
+$\mathcal{M}$ sei ein qualitatives Relationssystem mit Menge $M$, $\mathcal{N}$ sei
+ein numerisches Relationssystem und
+\begin{equation}
+\mathcal{H}(\mathcal{M}, \mathcal{N}) := \lbrace h : M \to \mathbb{R} | h \mbox{ ist ein Homomorphismus von } \mathcal{M} \mbox{ nach } \mathcal{N} \rbrace
+\end{equation}
+sei die Menge aller Homomorphismen von $\mathcal{M}$ nach  $\mathcal{N}$. Dann
+heißt für eine Funktion $f : M \to \mathbb{R}$ das Tripel $(\mathcal{M}, \mathcal{N},f)$
+\textit{Skala}, wenn $f\in \mathcal{H}(\mathcal{M},\mathcal{N})$.
+\end{definition}
+
+Bemerkungen
+
+* Die hier gewählte Definition entspricht der Definition der *numerischen Skala* in @roberts_1984.
+* Wenn $\mathcal{H}(\mathcal{M}, \mathcal{N})   = \emptyset$, dann existiert  kein         Homomorphismus von $\mathcal{M}$ nach $\mathcal{N}$.
+* Wenn $|\mathcal{H}(\mathcal{M}, \mathcal{N})| > 1$        , dann existieren mehr als ein Homomorphismus von $\mathcal{M}$ nach $\mathcal{N}$.
+* Der Begriff "Skala" wird manchmal auch nur nur für einen Homomorphimus verwendet.
+* In der Psychologie wird der Begriff "Skala" auch oft als Synonym für "Fragebogen" verwendet.
+
+#
+\vfill
+\Large
+\setstretch{3}
+Grundidee des Messens
+
+Homomorphismen und Skalen
+
+**Repräsentation, Eindeutigkeit, Bedeutsamkeit**
+
+Selbstkontrollfragen
+\vfill
+
+# Repräsentation, Eindeutigkeit, Bedeutsamkeit
+\small
+\begin{definition}[Repräsentationsproblem der Messtheorie]
+\justifying
+Gegeben seien ein qualitatives Relationssystem $\mathcal{M}$ und ein numerisches 
+Relationssystem $\mathcal{N}$. Dann besteht das \textit{Repräsentationsproblem der Messtheorie} 
+darin, notwendige und hinreichende Eigenschaften von $\mathcal{M}$ für die Existenz eines
+Homomorphismus von $\mathcal{M}$ nach $\mathcal{N}$ anzugeben.
+\end{definition}
+
+\footnotesize
+Bemerkungen
+
+* \justifying Für ein gegebenes numerisches Relationssystem $\mathcal{N}$ fragt man also, wie ein
+  qualitatives Relationssystem $\mathcal{M}$ beschaffen sein muss, damit ein Homomorphismus 
+  von $\mathcal{M}$ nach $\mathcal{N}$ existiert.
+* Messtheoretische Theoreme, die besagen, dass bestimmte Eigenschaften von $\mathcal{M}$ 
+  für die Existenz eines Homomorphismus von $\mathcal{M}$ nach $\mathcal{N}$ notwendig und hinreichend sind, heißen 
+  \textit{Repräsentationstheoreme}.
+* Im Idealfall ist der Beweis eines Repräsentationstheorems \textit{konstruktiv},
+  d.h., neben dem Beweis der bloßen Existenz des Homomorphismus gibt der Beweis auch die funktionale 
+  Form des Homomorphismus an und definiert damit den Messvorgang.
+* Die notwendigen und hinreichenden Eigenschaften von $\mathcal{M}$ für die Existenz eines 
+  Homomorphismus von $\mathcal{M}$ nach $\mathcal{N}$ werden traditionell auch *Axiome* von $\mathcal{M}$ genannt.
+* In den Einheiten (8) Ordinalmessung, (9) Extensivmessung und (10) Differenzmessung addressieren wir die jeweiligen Repräsentationsprobleme.
+
+# Repräsentation, Eindeutigkeit, Bedeutsamkeit
+\setstretch{1.2}
+\small
+\textcolor{darkblue}{Notwendige und hinreichende Eigenschaften}
+\footnotesize
+
+Wir erinnern an die Bedeutung *notwendiger und hinreichender Eigenschaften (Bedingungen)*.
+
+Eigenschaften $B$ sind eine notwendige Bedingung für eine Aussage $K$, wenn sie zwingend
+erfüllt sein müssen, wenn $K$ erfüllt ist. Man schreibt dafür $K \Rightarrow B$, "aus $K$ folgt $B$".
+Gemahlene Bohnen sind eine notwendige Bedingung beim Kochen von Kaffee, d.h. wenn Kaffee gekocht
+wird, existieren gemahlene Bohnen. Hinreichend für das Kochen von Kaffee sind gemahlene Bohnen aber nicht,
+es braucht ja z.B. auch noch Wasser und Hitze. Bei der Frage nach Nullstellen einer Funktion 
+$f : \mathbb{R} \to \mathbb{R}$ ist eine notwendige Bedingung für das Vorliegen einer Extremstelle 
+in $x$, dass $f'(x) = 0$. Wenn also $f$ an der Stelle $x$ eine Extremstelle hat, dann gilt $f'(x) = 0$. 
+Hinreichend für eine Extremstelle von $f$ in $x$ ist $f'(x) = 0$ allerdings nicht, denn es gilt auch 
+$f'(x) = 0$ in Sattelpunkten. Im Kontext der messtheoretischen Repräsentation sind 
+notwendige Eigenschaften von $\mathcal{M}$ solche Eigenschaften von $\mathcal{M}$, die aus 
+der Existenz eines Homomorphismus von $\mathcal{M}$ nach $\mathcal{N}$ folgen.
+
+Eigenschaften $B$ sind eine hinreichende Bedingung für eine Aussage $K$, wenn
+aus $B$ zwingend folgt, dass $K$ erfüllt ist. Man schreibt dafür $B \Rightarrow K$, "aus $B$ folgt $K$".
+Nassfutter zu fressen ist eine hinreichende Bedingung für die Sättigung des Katers, d.h. wenn der Kater
+Nassfutter gefressen hat, ist er satt. Allerdings ist Nassfutter zu fressen keine notwendige Bedingung für
+die Sättigung des Katers, denn auch wenn der Kater Trockenfutter gefressen hat, ist er satt.
+Bei der Frage nach Nullstellen einer Funktion $f : \mathbb{R} \to \mathbb{R}$ sind hinreichende Bedingungen
+für das Vorliegen einer Extremstelle in $x$, dass $f'(x) = 0$ und $f''(x) \neq 0$. Aus  $f'(x) = 0$ und $f''(x) \neq 0$
+folgt zwingend, dass $f$ in $x$ eine Extremstelle hat. Im Kontext der messtheoretischen 
+Repräsentation sind hinreichende Eigenschaften von $\mathcal{M}$ solche Eigenschaften von $\mathcal{M}$, 
+aus denen die Existenz eines Homomorphismus von $\mathcal{M}$ nach  $\mathcal{N}$ folgen.
+
+Hinreichende und notwendige Eigenschaften $B$ von $\mathcal{M}$ für die 
+Existenz $K$ eines Homomorphismus sind also ein Minmalset an Eigenschaften von 
+$\mathcal{M}$, die für die Existenz eines Homomorphismus genügen, so dass gilt 
+\begin{equation}
+B \Rightarrow K \mbox{ und } K \Rightarrow B \mbox{, also } B \Leftrightarrow K.
+\end{equation}
+
+# Repräsentation, Eindeutigkeit, Bedeutsamkeit
+\small
+\begin{definition}[Eindeutigkeitsproblem der Messtheorie]
+\justifying
+Gegeben seien ein qualitatives Relationssystem $\mathcal{M}$, ein numerisches 
+Relationssystem $\mathcal{N}$ und ein Homomorphismus $f$ von $\mathcal{M}$ nach $\mathcal{N}$.
+Dann besteht das \textit{Eindeutigkeitsproblem der Messtheorie} darin, zu bestimmen, 
+ob dieser Homomorphismus der einzige Homomorphismus ist, der zwischen $\mathcal{M}$ 
+und $\mathcal{N}$ existiert.
+\end{definition}
+
+\footnotesize
+Bemerkungen
+
+* \justifying Die Antworten auf Eindeutigkeitsprobleme legen die sogenannten *Skalenarten* fest.
+* Die Antworten auf Eindeutigkeitsprobleme legen die Grundlage für den Begriff der *Bedeutsamkeit*.
+* In Einheit (7) Skalenarten befassen wir uns mit dem Eindeutigkeitsproblem der Messtheorie.
+
+# Repräsentation, Eindeutigkeit, Bedeutsamkeit
+\small
+\begin{definition}[Bedeutsamkeit]
+\justifying
+$\mathcal{M}$ sei ein qualitatives Relationssystem und $\mathcal{N}$ sei ein
+numerisches Relationssystem. Dann heißt eine Aussage bezüglich $\mathcal{M}$ und 
+$\mathcal{N}$ \textit{bedeutsam}, wenn ihr Wahrheitsgehalt unverändert bleibt, wenn eine
+beliebige Skala $(\mathcal{M},\mathcal{N},f)$ durch eine andere Skala
+$(\mathcal{M}, \mathcal{N},g)$ ersetzt wird.
+\end{definition}
+
+\footnotesize
+Bemerkungen
+
+* \justifying Mithilfe der Theorie der Skalenarten kann der Begriff der Bedeutsamkeit klarer mithilfe
+  des Begriffs der *zulässigen Skalentransformationen* formuliert werden, welchen wir in
+  Einheit (7) Skalenarten einführen.
+* Der Begriff der Bedeutsamkeit wird manchmal herangezogen, um zu argumentieren, dass bestimmte
+  Datenanalysen bei bestimmten Daten "erlaubt" und andere "nicht erlaubt sind". Wir werden diese
+  Aspekte in den Einheit (11) Bedeutsamkeit und (12) Likertskalen näher beleuchten und kritisch diskutieren.
+* Zum Einstieg geben wir im Folgenden zwei Beispiele für intuitiv bedeutsame und nicht bedeutsame Aussagen.
+
+# Repräsentation, Eindeutigkeit, Bedeutsamkeit
+\small
+\textcolor{darkblue}{Beispiele (1) Bedeutsame Aussagen beim Messen der Masse von Objekten}
+
+\footnotesize
+Die Aussage "Objekt $m$ ist doppelt so schwer wie Objekt $n$" ist intuitiv bedeutsam,
+da unabhängig davon, ob in Gramm, Kilogramm (1 kg = 1000 g), oder angloamerikanischen Pfund (1 lb = 0.453 kg)
+gemessen wird, die Aussage wahr bleibt. 
+
+Seien zum Beispiel den Objekten $m$ und $n$ durch
+die Gramm-Skala die Gewichte 400 g und 200 g zugeordnet. Dann gilt
+\begin{equation}
+\frac{\mbox{Gewicht von } m}{\mbox{Gewicht von } n} = 2
+\rightarrow
+\frac{400 \mbox{ g}}{200 \mbox{ g}} = 2
+\rightarrow
+\frac{0.4 \mbox{ kg}}{0.2 \mbox{ kg}} = 2
+\rightarrow
+\frac{0.88 \mbox{ lb}}{0.44 \mbox{ lb}} = 2.
+\end{equation}
+\vspace{2mm}
+
+\small
+\textcolor{darkblue}{Beispiel (2) Nicht bedeutsame Aussagen beim Messen der Temperatur von Objekten}
+\footnotesize
+
+Die Aussage "Objekt $m$ ist doppelt so warm wie Objekt $n$" ist intuitiv nicht bedeutsam,
+da abhängig davon, ob in Grad Celsius (T$_{\mbox{\tiny C}}$), Fahrenheit
+(T$_{\mbox{\tiny F}}$ = $\frac{9}{5}$ T$_{\mbox{\tiny C}}$ + 32), oder Kelvin
+(T$_{\mbox{\tiny K}}$ = T$_{\mbox{\tiny C}}$ + 275.15)
+gemessen wird, die Aussage falsch wird. 
+
+Seien zum Beispiel den Objekten $m$ und $n$ durch  die Celsius-Skala die 
+Temperaturen 40°C und 20°C zugeordnet. Dann gilt
+\begin{equation}
+\frac{\mbox{Temperatur von } m}{\mbox{Temperatur von } n} = 2
+\rightarrow
+\frac{40^{\circ} \mbox{C}}{20^{\circ} \mbox{C}} = 2
+\rightarrow
+\frac{104^{\circ} \mbox{ F}}{68^{\circ} \mbox{ F}} = 1.52 \neq 2
+\rightarrow
+\frac{313.15\mbox{ K}}{293.15\mbox{ K}} = 1.06 \neq 2.
+\end{equation}
+Das Messen von Temperatur von Objekten wird in der Folge unser Arbeitsbeispiel
+für den Begriff der *Differenzmessung* und dem zugehörigen Begriff der *Intervallskala* sein.
+
+#
+\vfill
+\Large
+\setstretch{3}
+Grundidee des Messens
+
+Homomorphismen und Skalen
+
+Repräsentation, Eindeutigkeit, Bedeutsamkeit
+
+**Selbstkontrollfragen**
+\vfill
+
+# Selbstkontrollfragen
+\footnotesize
+\setstretch{2}
+
+1. Erläutern Sie die Grundidee des Messens.
+2. Erläutern Sie das Messen von Entscheidungsoptionspräferenzen.
+3. Erläutern Sie das Messen der Masse von Objekten.
+4. Geben Sie die Definition eines Homomorphismus wieder.
+5. Geben Sie die Definition eines Isomorphismus wieder.
+6. Geben Sie die Definition einer Skala wieder.
+7. Definieren Sie das Repräsentationsproblem der Messtheorie.
+8. Erläutern Sie die Begriffe der notwendigen und hinreichenden Eigenschaften eines
+   qualitativen Relationssystems für die Existenz eine Homomorphismus.
+9. Definieren Sie das Eindeutigkeitsproblem der Messtheorie.
+10. Definieren den messtheoretischen Begriff der Bedeutsamkeit.
+11. Warum ist die Aussage "Objekt $m$ ist doppelt so schwer wie Objekt $n$" intuitiv bedeutsam,
+    die Aussage "Objekt $m$ ist doppelt so warm wie Objekt $n$" dagegehn intuitiv nicht bedeutsam?
+
+
+
+# Referenzen
+\footnotesize
