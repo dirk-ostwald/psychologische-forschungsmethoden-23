@@ -1,0 +1,519 @@
+---
+fontsize: 8pt
+bibliography: 7_Referenzen.bib
+citation_package: natbib
+output:
+  beamer_presentation:
+    keep_tex: true
+    includes:
+      in_header: 7_header.tex
+---
+
+```{r, include = F}
+source("7_R_common.R")
+```
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("7_Abbildungen/pfm_7_otto.png")
+```
+
+\vspace{2mm}
+
+\Large
+Psychologische Forschungsmethoden
+\vspace{6mm}
+
+\normalsize
+BSc Philosophie-Neurowissenschaften-Kognition WiSe 2022/23
+
+BSc Psychologie WiSe 2022/23
+
+\large
+\vspace{6mm}
+Prof. Dr. Dirk Ostwald
+
+#  {.plain}
+\vfill
+\center
+\huge
+\textcolor{black}{(7) Skalenarten}
+\vfill
+
+#
+\setstretch{1.2}
+
+Überblick
+\footnotesize
+
+Basierend auf den Beobachtungen zur Bedeutsamkeit von Aussagen bei Gewichts- und
+Temperaturmessungen besteht spätestens seit @stevens_1946 ein Verlangen, zu
+klassifizieren welche Art von Aussagen und Operationen im Zahlenraum bei welcher
+Art von Messproblem angemessen ist. Traditionell führt dies auf die Begriffe der
+Ordinal-, Verhältnis, und Intervallskala, wie in untenstehender Tabelle aus 
+@stevens_1946 skizziert.
+
+```{r, echo = FALSE, out.width = "70%"}
+knitr::include_graphics("7_Abbildungen/pfm_7_skalenarten.pdf")
+```
+Die verschiedenen Skalen hier sind im Sinne des Eindeutigkeitsproblems der Messtheorie
+eindeutig bis auf eine bestimmte Art von Funktionstransformation. Es ergibt sich also die
+Frage, was der Begriff der "Skalenart" bezeichnet und vor dem Hintegrund der Messtheorie bedeutet.
+Die folgenden Ausführungen dazu basieren auf @roberts_1984, Kapitel 2 und insbesondere
+@roberts_1976. Die Begriffe der Ordinal-, Verhältnis-, und Intervallskala stehen 
+in Korrespondenz zu den Begriffen der Ordinal-, Extensiv-, und Differenzmessung,
+respektive, die wir in nachfolgenden Einheiten diskutieren. Den Begriff der 
+Nominalskala sparen wir aus.
+
+#
+\vfill
+\Large
+\setstretch{3.5}
+**Reguläre Repräsentationen**
+
+Skalenarten
+
+Selbstkontrollfragen
+
+\vfill
+
+# Reguläre Repräsentationen
+\footnotesize
+\begin{definition}[Zulässige Transformationen einer Skala]
+\justifying
+Gegeben sei eine Skala $(\mathcal{M},\mathcal{N},f)$ mit zugrundeliegenden Mengen $M$
+und $\mathbb{R}$. Sei weiterhin $\phi$ eine Funktion der Form $\phi : f(M) \to \mathbb{R}$, 
+wobei $f(M) := \{f(m)|m\in M\}\subseteq \mathbb{R}$ die Bildmenge von $M$ unter $f$ bezeichnet. 
+Sei schließlich $\phi \circ f : M \to \mathbb{R}$ die Verkettung von $\phi$ und $f$. 
+Dann heißt $\phi$ eine \textit{zulässige Transformation von $(\mathcal{M},\mathcal{N},f)$}, 
+wenn $\phi \circ f$ ein Homomorphismus bezüglich $\mathcal{M}$ und $\mathcal{N}$ ist.
+\end{definition}
+\footnotesize
+Bemerkung
+
+* Zur Konstruktion von $f, \phi$ und $\phi\circ f$, siehe untenstehende Abbildung.
+
+```{r, echo = FALSE, out.width = "35%"}
+knitr::include_graphics("7_Abbildungen/pfm_7_zulässige_skalentransformationen.pdf")
+```
+
+# Reguläre Repräsentationen
+
+\small
+Beispiele
+
+\footnotesize
+Es seien $\mathcal{M} := (\mathbb{N},>)$, $\mathcal{N} := (\mathbb{R},>)$ und
+$f : \mathbb{N} \to \mathbb{R}, n \mapsto f(n) := 2n$. Dann ist 
+$f \in \mathcal{H}(\mathcal{M},\mathcal{N})$ und $(\mathcal{M},\mathcal{N},f)$ eine Skala, 
+weil für alle $n,m\in \mathbb{N}$ gilt, dass
+\begin{equation}
+n > m \Leftrightarrow 2n > 2m \Leftrightarrow f(n) > f(m).
+\end{equation}
+
+(1) Es sei nun $\phi : f(\mathbb{N}) \to \mathbb{R}, x \mapsto \phi(x) := x + 5$.
+Dann ist $\phi$ eine zulässige Transformation von $(\mathcal{M},\mathcal{N},f)$,
+denn auch
+\begin{equation}
+\phi \circ f : \mathbb{N} \to \mathbb{R}, n \mapsto (\phi \circ f)(n) := \phi(f(n)) = 2n + 5
+\end{equation}
+ist ein Homomorphismus, weil für alle $n,m\in \mathbb{N}$ auch gilt, dass
+\begin{equation}
+n > m \Leftrightarrow 2n + 5 > 2m + 5 \Leftrightarrow (\phi \circ f)(n) > (\phi \circ f)(m).
+\end{equation}
+
+(2) Es sei nun $\phi : f(\mathbb{N}) \to \mathbb{R}, x \mapsto \phi(x) := -x$.
+Dann ist $\phi$ keine zulässige Transformation von $(\mathcal{M},\mathcal{N},f)$,
+denn
+\begin{equation}
+\phi \circ f : \mathbb{N} \to \mathbb{R}, n \mapsto (\phi \circ f)(n) := \phi(f(n)) = -2n
+\end{equation}
+ist kein Homomorphismus, weil für alle $n,m\in \mathbb{N}$ gilt
+\begin{equation}
+n > m \Leftrightarrow -2n < -2m \,\,\cancel{\Leftrightarrow}\,\, (\phi \circ f)(n) > (\phi \circ f)(m).
+\end{equation}
+
+# Reguläre Repräsentationen
+\small
+\begin{definition}[Reguläre Skala und reguläre Repräsentation]
+\justifying
+$\mathcal{M}$ sei ein qualitatives Relationssystem, $\mathcal{N}$ sei ein numerisches
+Relationssystem und $\mathcal{H}(\mathcal{M},\mathcal{N})$ sei die Menge der Homomorphismen
+von $\mathcal{M}$ nach $\mathcal{N}$. Eine Skala $(\mathcal{M},\mathcal{N},f)$ heißt
+\textit{regulär}, wenn zu jedem $g \in \mathcal{H}(\mathcal{M},\mathcal{N})$ eine
+Funktion $\phi$ gefunden werden kann, so dass $g = \phi \circ f$ gilt. Wenn jede
+Skala $(\mathcal{M},\mathcal{N}, f)$ regulär ist, sagt man, \textit{dass die Repräsentation 
+$\mathcal{M}\to \mathcal{N}$ regulär ist}.
+\end{definition}
+
+\footnotesize
+Bemerkungen
+\justifying
+
+* Für $(\mathcal{M},\mathcal{N},f)$ und $g \in \mathcal{H}(\mathcal{M},\mathcal{N})$ ist ein $\phi$ mit $g = \phi \circ f$ natürlich eine zulässige Transformation von $f$.
+* Bei zulässigen Transformationen fragt man, ob für  $f$ und $\phi$ gilt, dass $g = \phi \circ f$ ein Homomorphismus ist.
+* Bei regulären Skalen geht man von $f,g \in \mathcal{H}(\mathcal{M},\mathcal{N})$ aus und fragt, ob es ein $\phi$ mit $g = \phi \circ f$ gibt.
+* Reguläre Repräsentationen vereinfachen die Beantwortung des Eindeutigkeitsproblems.
+* Reguläre Repräsentationen induzieren den Begriff der *Skalenart*.
+* Die Regularität einer Repräsentation liegt in der speziellen Form von $\mathcal{M}$ nach $\mathcal{N}$ begründet.
+
+
+# Reguläre Repräsentationen
+\small
+\noindent (1) Beispiel für eine reguläre Repräsentation
+\footnotesize
+
+
+\footnotesize
+Es seien $\mathcal{M} := (\mathbb{N},>)$, $\mathcal{N} := (\mathbb{R},>)$ und 
+\begin{equation}
+f : \mathbb{N} \to \mathbb{R}, n \mapsto f(n) := 2n
+\end{equation}
+sowie 
+\begin{equation}
+g : \mathbb{N} \to \mathbb{R}, n \mapsto g(n) := 7n
+\end{equation}
+Dann sind $f,g\in \mathcal{H}(\mathcal{M}, \mathcal{N})$ und $(\mathcal{M},\mathcal{N},f)$ 
+und $(\mathcal{M},\mathcal{N},g)$ sind Skalen. In diesem Fall ergibt sich 
+\begin{equation}
+g = \phi \circ f \mbox{ für }\phi : f(M) \to \mathbb{R}, x \mapsto \phi(x) := \frac{7}{2}x,
+\end{equation}
+denn
+\begin{equation}
+(\phi \circ f)(n) = \phi(2n) = \frac{7}{2}\cdot 2n = 7n = g(n).
+\end{equation}
+Per Konstruktion ist $g = \phi\circ f\in \mathcal{H}(\mathcal{M}, \mathcal{N})$ und $\phi$ damit eine zulässige Transformation von $f$.
+
+# Reguläre Repräsentationen
+\small
+\vspace{1mm}
+\setstretch{1.2}
+\noindent (2) Beispiel für eine irreguläre Repräsentation
+\footnotesize
+
+Es sei $\mathcal{M} := (M,R)$ mit $M := \{r,s,t\}$ und $R := \{(r,s),(r,t)\}$. 
+Weiterhin sei $\mathcal{N} := (\mathbb{R},>_{1})$, wobei 
+\begin{equation}
+x >_{1} y \Leftrightarrow x > y + 1
+\end{equation}
+für alle $x,y\in \mathbb{R}$. Dann ist
+\begin{equation}
+f : M \to \mathbb{R} \mbox{ mit } f(r) := 2, f(s) := 0, f(t) := 0
+\end{equation}
+ein Homomorphismus von $\mathcal{M}$ nach $\mathcal{N}$, weil
+\begin{align}
+\begin{split}
+(r,s) \in R & \Leftrightarrow 2 > 0 + 1 \Leftrightarrow 2 >_1 0 \Leftrightarrow f(r) >_{1} f(s) \\
+(r,t) \in R & \Leftrightarrow 2 > 0 + 1 \Leftrightarrow 2 >_1 0 \Leftrightarrow f(r) >_{1} f(t).
+\end{split}
+\end{align}
+Weiterhin ist 
+\begin{equation}
+g : M \to \mathbb{R} \mbox{ mit } g(r) := 2.0, g(s) := 0.1, g(t) := 0.0
+\end{equation}
+ein Homomorphismus von $\mathcal{M}$ nach $\mathcal{N}$, weil
+\begin{align}
+\begin{split}
+(r,s) \in R & \Leftrightarrow 2.0 > 0.1 + 1 \Leftrightarrow 2 >_1 0.1 \Leftrightarrow g(r) >_{1} g(s) \\
+(r,t) \in R & \Leftrightarrow 2.0 > 0.0 + 1 \Leftrightarrow 2 >_1 0.0 \Leftrightarrow g(r) >_{1} g(t).
+\end{split}
+\end{align}
+Allerdings existiert keine Funktion der Form $\phi:f(M) \to \mathbb{R}$ mit $g = \phi \circ f$, 
+denn für ein solches $\phi$ müsste 
+\begin{equation}
+g(s) = (\phi \circ f)(s) = (\phi \circ f)(t) = g(t)
+\end{equation}
+gelten, weil $f(s) = f(t)$ und $\phi$ als Funktion jedem $x \in f(M)$ genau ein $\phi(x) \in \mathbb{R}$ zuordnet. 
+
+Es gilt aber nach Definition $g(s) = 0.1 \neq 0.0 = g(t)$.
+
+
+# Reguläre Repräsentationen
+\small
+\vspace{1mm}
+\setstretch{1.2}
+\begin{theorem}[Charakterisierung regulärer Skalen]
+\justifying
+\normalfont
+Eine Skala $(\mathcal{M}, \mathcal{N},f)$ ist dann und nur dann regulär, wenn
+für alle $g \in \mathcal{H}(\mathcal{M}, \mathcal{N})$ und $m,n \in M$ gilt, dass
+aus $f(m) = f(n)$ folgt, dass $g(m) = g(n)$.
+\end{theorem}
+
+\footnotesize
+\underline{Beweis}
+
+*Beweis von "$(\mathcal{M}, \mathcal{N},f)$ ist regulär $\Rightarrow$ Aus $f(m) = f(n)$ folgt, dass $g(m) = g(n)$."*
+
+Sei zunächst $(\mathcal{M}, \mathcal{N},f)$  ein reguläre Skala. Dann existiert
+für jede beliebige Skala $(\mathcal{M}, \mathcal{N},g)$, also insbesondere für
+jedes $g \in \mathcal{H}(\mathcal{M}, \mathcal{N})$ eine Funktion der Form
+$\phi : f(M) \to \mathbb{R}$, so dass $g = \phi \circ f$. Es gilt also
+\begin{equation}
+f(m) = f(n) \Rightarrow (\phi \circ f)(m) = (\phi \circ f)(n) \Leftrightarrow g(m) = g(n),
+\end{equation}
+da $\phi$ als Funktion jedem $x \in f(M)$ genau ein (und nicht etwa mehrere)
+$\phi(x)$ zuordnet.
+
+\vspace{1mm}
+*Beweis von "Aus $f(m) = f(n)$ folgt, dass $g(m) = g(n) \Rightarrow (\mathcal{M}, \mathcal{N},f)$ ist regulär."*
+
+Sei umgekehrt ein $g \in \mathcal{H}(\mathcal{M}, \mathcal{N})$ mit $g(m) = g(n)$ und definiere
+\begin{equation}
+\phi \circ f : f(M) \to \mathbb{R}, m \mapsto (\phi \circ f)(m) := g(m).
+\end{equation}
+Dann gilt, weil aus $f(m) = f(n)$ folgt, dass $g(m) = g(n)$ und damit
+$(\phi \circ f)(m) := (\phi \circ f)(n)$ ist, dass $\phi$ eine Funktion ist, also jedem $x \in f(M)$
+genau ein (und nicht etwa mehrere) $\phi(x)$ zuordnet. Weiterhin ist $g = \phi \circ f$.
+Es existiert also für eine beliebige Skala $(\mathcal{M}, \mathcal{N},g)$ eine
+Funktion der Form $\phi \circ f : f(M) \to \mathbb{R}$ mit $g = \phi \circ f$, und
+damit ist die Skala $(\mathcal{M}, \mathcal{N},f)$ regulär.
+
+$\hfill\Box$
+
+# Reguläre Repräsentationen
+\small
+\begin{theorem}[Isomorphismen und Regularität]
+\justifying
+\normalfont
+Wenn $f$ ein Isomorphismus ist, dann ist $(\mathcal{M}, \mathcal{N},f)$ regulär.
+\end{theorem}
+
+\footnotesize
+\underline{Beweis}
+
+Wenn $f$ ein Isomorphismus ist, dann ist $f$ ein injektiver Homomorphismus von
+$\mathcal{M}$ nach $\mathcal{N}$. Insbesondere gilt für $f$ also, dass aus
+$f(m) = f(n)$ folgt, dass $m = n$ ist. Sei $g$ ein weiterer Homomorphismus von
+$\mathcal{M}$ nach $\mathcal{N}$. Dann ist $g$ insbesondere eine Abbildung von
+$M$ nach $\mathbb{R}$ und ordnet jedem $m \in M$ genau ein $g(m) \in \mathbb{R}$ zu.
+Also folgt aus $m = n$, dass $g(m) = g(n)$.
+Also impliziert für einen Isomorphismus und alle $m,n \in M$ $f(m) = f(n)$ immer,
+dass für einen weiteren Homomorphismus $g$ von $\mathcal{M}$ nach $\mathcal{N}$ gilt,
+dass $g(m) = g(n)$ und dies ist gerade die Bedingung für die Regularität von
+$(\mathcal{M}, \mathcal{N},f)$ nach dem Theorem zur Charakterisierung regulärer Skalen.
+
+$\hfill\Box$
+
+#
+\vfill
+\Large
+\setstretch{3.5}
+Reguläre Skalen
+
+**Skalenarten**
+
+Selbstkontrollfragen
+\vfill
+
+# Skalenarten
+\setstretch{1.2}
+\footnotesize
+\begin{definition}[Skalenarten]
+\justifying
+Gegeben sei eine Skala $(\mathcal{M},\mathcal{N},f)$ mit zugrundeliegenden Mengen
+$M$ und $\mathbb{R}$ und Homomorphismus $f$. Weiterhin sei 
+\begin{equation}
+\Phi := \{\phi| \phi : f(M) \to \mathbb{R} \}
+\end{equation}
+die Menge der zulässigen Transformationen von $(\mathcal{M},\mathcal{N},f)$. Die \textit{Skalenart} 
+von $(\mathcal{M},\mathcal{N},f)$  ist dann durch $\Phi$ bestimmt. Insbesondere gelten: 
+\begin{itemize}
+\item[(1)] Wenn die Menge der zulässigen Transformationen von 
+$(\mathcal{M},\mathcal{N},f)$ die Menge der \textit{monoton steigenden Funktionen} 
+\begin{equation}
+\Phi := \{\phi| \phi : f(M) \to \mathbb{R}, x \mapsto \phi(x)  \mbox{ mit } x > y \Leftrightarrow \phi(x) > \phi(y) \mbox{ für alle } x,y \in f(M)\}
+\end{equation}
+ist, dann heißt $(\mathcal{M},\mathcal{N},f)$ \textit{Ordinalskala}.
+\item[(2)] Wenn die Menge der zulässigen
+Transformationen der Skala $(\mathcal{M},\mathcal{N},f)$ die Menge der 
+\textit{Ähnlichkeitstransformationen}
+\begin{equation}
+\Phi := \{\phi| \phi : f(M) \to \mathbb{R}, x \mapsto \phi(x) := \alpha x \mbox{ mit } \alpha > 0\}
+\end{equation}
+ist, dann heißt $(\mathcal{M},\mathcal{N},f)$ \textit{Verhältnisskala}.
+\item[(3)] Wenn die Menge der zulässigen
+Transformationen der Skala $(\mathcal{M},\mathcal{N},f)$ die Menge der 
+\textit{positiv linear-affinen Transformationen}
+\begin{equation}
+\Phi := \{\phi| \phi : f(M) \to \mathbb{R}, x \mapsto \phi(x) := \alpha x + \beta  \mbox{ mit } \alpha > 0\}
+\end{equation}
+ist, dann heißt $(\mathcal{M},\mathcal{N},f)$ \textit{Intervallskala}.
+\end{itemize}
+\end{definition}
+
+# Skalenarten
+\footnotesize
+\setstretch{2.5}
+
+* Wir werden in Einheit (9) sehen, dass Ordinalmessungen Ordinalskalen induzieren.
+* Ein prototypische Beispiel für Ordinalmessungen ist das Messen von Entscheidungsoptionspräferenzen.
+* Wir werden in Einheit (9) sehen, dass Extensivmessungen Verhältnisskalen induzieren.
+* Das prototypische Beispiel für eine Extensivmessung ist das Messen des Gewichts eines Objekts. 
+* Wir werden in Einheit (11) sehen, dass Differenzmessungen Intervallskalen induzieren.
+* Das prototypische Beispiel für Differenzmessungen ist das Messen der Temperatur in Celsius oder Fahrenheit.
+
+
+
+
+# Skalenarten
+\vspace{1mm}
+\small
+Beispiel (1) Nachweis der Ordinalskalenart einer Skala
+
+\footnotesize
+\setstretch{1.2}
+Gegeben sei das qualitative Relationssystem $\mathcal{M} := (M,R)$ mit 
+\begin{equation}
+M := \{r,s,t\} \mbox{ und } R := \{(r,s),(s,t),(r,t)\}
+\end{equation}
+$\mathcal{M}$ ist homomorph zu dem numerischen Relationssystem $\mathcal{N} := (\mathbb{R},>)$,
+denn mit
+\begin{equation}
+f : M \to \mathbb{R} \mbox{ mit } f(r) := 2, f(s) := 1, f(t) = 0
+\end{equation}
+existiert ein Homomorphismus von $\mathcal{M}$ nach $\mathcal{N}$ und $\mathcal{H}(\mathcal{M},\mathcal{N})\neq \emptyset$:
+\begin{align}
+\begin{split}
+(r,s) \in R & \Leftrightarrow 2 > 1 \Leftrightarrow f(r) > f(s) \Leftrightarrow (f(r), f(s)) \in\, > \\
+(s,t) \in R & \Leftrightarrow 1 > 0 \Leftrightarrow f(s) > f(t) \Leftrightarrow (f(s), f(t)) \in\, > \\
+(r,t) \in R & \Leftrightarrow 2 > 0 \Leftrightarrow f(r) > f(t) \Leftrightarrow (f(r), f(t)) \in\, > \\
+\end{split}
+\end{align}
+Da $f$ weiterhin injektiv ist, ist die Repräsentation regulär.
+Weiterhin ist $\phi$ eine zulässige Transformation von $f$ dann und nur dann, wenn
+$g := \phi \circ f$ wiederum ein Homomorphismus von $\mathcal{M}$ nach $\mathcal{N}$ ist, wenn
+also gilt
+\begin{align}
+\begin{split}
+g(r) > g(s) & \Leftrightarrow (\phi \circ f)(r) > (\phi \circ f)(s) \Leftrightarrow \phi(2) > \phi(1) \\
+g(s) > g(t) & \Leftrightarrow (\phi \circ f)(s) > (\phi \circ f)(t) \Leftrightarrow \phi(1) > \phi(0) \\
+g(r) > g(t) & \Leftrightarrow (\phi \circ f)(r) > (\phi \circ f)(t) \Leftrightarrow \phi(2) > \phi(0) \\
+\end{split}
+\end{align}
+Dann gilt für $\phi$ mit $f(M) := \{0,1,2\}$ aber, dass
+\begin{equation}
+\phi : f(M) \to \mathbb{R}, x \mapsto \phi(x)  \mbox{ mit } x > y \Leftrightarrow \phi(x) > \phi(y) \mbox{ für alle } x,y \in f(M)
+\end{equation}
+und $\phi$ ist dann und nur dann eine zulässige Transformation von $f$, wenn $\phi$ eine monoton steigende Funktion ist. Damit
+ist $(\mathcal{M}, \mathcal{N},f)$ eine Ordinalskala.
+
+# Skalenarten
+\small
+\begin{theorem}[Skalenart]
+\justifying
+\normalfont
+Wenn eine Repräsentation $\mathcal{M} \to  \mathcal{N}$ regulär ist und wenn
+$f$ und $g$ Homormorphismen von $\mathcal{M}$ nach $\mathcal{N}$ sind, dann ist 
+$f$ eine Ordinalskala, Verhältnisskala, oder Intervallskala genau dann und nur 
+dann, wenn $g$ eine Ordinalskala, Verhältnisskala, oder Intervallskala, respektive, ist.
+\end{theorem}
+\footnotesize
+Bemerkungen
+
+* Bei regulären Repräsentationen sind also alle Skalen von der gleichen Skalenart.
+* Die Regularität einer Repräsentation liegt in der speziellen Form von $\mathcal{M}$ nach $\mathcal{N}$ begründet.
+* Im Folgenden betrachten wir, wie $\mathcal{M}$ und $\mathcal{N}$ beschaffen sein müssen, um obige Skalenarten zu induzieren.
+
+# Skalenarten
+\footnotesize
+\underline{Beweis}
+
+Wir beweisen das Theorem nur für den Fall einer Ordinalskala. Wir zeigen dabei 
+auch lediglich, dass aus der Regularität von $\mathcal{M} \to  \mathcal{N}$ und der Tatsache, 
+dass $f$ eine Ordinalskala ist, folgt, dass ein weiterer Homomorphismus $g$ von 
+$\mathcal{M}$ nach $\mathcal{N}$ ebenfalls eine Ordinalskala ist.
+
+$f$ sei eine Ordinalskala. Wir halten zunächst fest, dass weil die Repräsentation 
+$\mathcal{M} \to  \mathcal{N}$ regulär ist, es ein $\phi : f(M) \to \mathbb{R}$ mit 
+$g = \phi \circ f$ gibt. Weiterhin gilt, dass weil $g$ ein Homomorphismus ist, ein solches
+$\phi$ eine zulässige Transformation von $f$ ist. Schließlich gilt, dass weil 
+$f$ eine Ordinalskala ist und damit per Definition alle zulässigen Transformationen 
+von $f$ monoton steigende Funktionen sind, ein solches $\phi$ eine monoton steigende Funktion ist.
+
+Der restliche Beweis erfolgt durch Beweis folgender Implikationen:
+
+(1) $\phi' : g(M) \to \mathbb{R}$ ist monoton steigend $\quad\,\,\Rightarrow$ $\phi'$ ist eine zulässige Transformation von $g$. 
+(2) $\phi'$ ist eine zulässige Transformation von $g \Rightarrow \phi' : g(M) \to \mathbb{R}$ ist monoton steigend.
+
+Also gilt
+\begin{equation}
+\phi' \mbox{ ist eine zulässige Transformation von } g \Leftrightarrow \phi' : g(M) \to \mathbb{R} \mbox{ ist monoton steigend}.
+\end{equation}
+Die Klasse der zulässigen Transformation von $g$ ist damit also die Klasse der 
+monoton steigenden Funktionen und $g$ ist damit eine Ordinalskala.
+
+
+# Skalenarten
+\footnotesize
+\underline{Beweis}
+
+
+*Beweis der Implikation (1) $\phi' : g(M) \to \mathbb{R}$ ist monoton steigend $\Rightarrow$ $\phi'$ ist eine zulässige Transformation von $g$*
+
+Die Implikation gilt, weil mit obigem $\phi$ gilt, dass
+\begin{equation}
+\phi' \circ g = \phi' \circ (\phi \circ f) = (\phi' \circ \phi) \circ f.
+\end{equation}
+Weil $\phi'$ und $\phi$ monoton steigende Funktionen sind, ist $\phi' \circ \phi$ auch monoton steigend
+und damit eine zulässige Transformation von $f$. Damit ist wiederum $\phi'\circ g$ ein Homomorphismus
+von $\mathcal{M}$ nach $\mathcal{N}$ und $\phi'$ daher eine zulässige Transformation
+von $g$.
+\vspace{1mm}
+
+*Beweis der Implikation (2) $\phi'$ ist eine zulässige Transformation von $g \Rightarrow \phi' : g(M) \to \mathbb{R}$ ist monoton steigend*
+
+Die Implikation gilt, weil mit obigem $\phi$ gilt, dass
+\begin{equation}
+\phi' \circ g = \phi' \circ (\phi \circ f) = (\phi' \circ \phi) \circ f
+\end{equation}
+ein Homorphismus von $\mathcal{M}$ nach $\mathcal{N}$ ist und $\phi' \circ \phi$
+somit eine zulässige Transformation $f$. Damit muss $\phi' \circ \phi$ aber eine
+monoton steigende Funktion sein und deshalb auch $\phi'$.
+
+# Skalenarten
+\setstretch{2}
+\small
+Weitere Skalenarten
+
+\footnotesize
+Man unterscheidet weiterhin mindestens folgende Skalenarten:
+
+\center
+\begin{tabular}{ll}
+Name                & Menge der zulässigen Transformationen                                                                     \\\hline
+Absolutskala        & $\Phi := \{\phi| \phi : f(M) \to \mathbb{R}, x \mapsto \phi(x) := x\}$                                    \\
+Log-Intervallskala  & $\Phi := \{\phi| \phi : f(M) \to \mathbb{R}, x \mapsto \phi(x) := \alpha x^{\beta}, \alpha,\beta >0\}$    \\
+Differenzskala      & $\Phi := \{\phi| \phi : f(M) \to \mathbb{R}, x \mapsto \phi(x) := x - \beta, \beta \in \mathbb{R}\}$      \\
+Nominalskala        & $\Phi := \{\phi| \phi : f(M) \to \mathbb{R} \mbox{ und } \phi \mbox{ ist injektiv}\}$                     \\\hline
+\end{tabular}
+
+* Jede dieser Skalenarten ist durch die spezielle Form von  $\mathcal{M}$ und $\mathcal{N}$ determiniert.
+* Im Rahmen dieser Einführung verzichten wir auf eine detaillierte Diskussion ihrer Repräsentationen.
+* Log-Intervallskalen werden uns jedoch in Einheit (12) Psychophysik begegnen.
+
+#
+\vfill
+\Large
+\setstretch{3.5}
+Reguläre Skalen
+
+Skalenarten
+
+**Selbstkontrollfragen**
+\vfill
+
+# Selbstkontrollfragen
+\small
+\setstretch{3}
+1. Definieren Sie den Begriff der zulässigen Transformation einer Skala.
+2. Definieren Sie die Begriffe der regulären Skala und der regulären Repräsentation.
+3. Definieren Sie den Begriff der Skalenart.
+4. Definieren Sie den Begriff der Ordinalskala.
+5. Definieren Sie den Begriff der Verhältnisskala.
+6. Definieren Sie den Begriff der Intervallskala.
+7. Geben Sie das Theorem zur Skalenart wieder.
+
+# Referenzen
+\footnotesize
