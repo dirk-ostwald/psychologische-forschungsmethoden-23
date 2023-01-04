@@ -1,0 +1,666 @@
+---
+fontsize: 8pt
+bibliography: 8_Referenzen.bib
+citation_package: natbib
+output:
+  beamer_presentation:
+    keep_tex: true
+    includes:
+      in_header: 8_header.tex
+---
+
+```{r, include = F}
+source("8_R_common.R")
+```
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("8_Abbildungen/pfm_8_otto.png")
+```
+
+\vspace{2mm}
+
+\Large
+Psychologische Forschungsmethoden
+\vspace{6mm}
+
+\normalsize
+BSc Philosophie-Neurowissenschaften-Kognition WiSe 2022/23
+
+BSc Psychologie WiSe 2022/23
+
+\large
+\vspace{6mm}
+Prof. Dr. Dirk Ostwald
+
+#  {.plain}
+\vfill
+\center
+\huge
+\textcolor{black}{(8) Ordinalmessung}
+\vfill
+
+#
+\Large
+\setstretch{3}
+\vfill
+**Vorbemerkungen**
+
+Strenge schwache Ordnungen
+
+Repräsentation und Eindeutigkeit
+
+Selbstkontrollfragen
+\vfill
+
+# Vorbemerkungen
+\textcolor{darkblue}{Vorgehensweisen messtheoretischer Überlegungen}
+
+\small
+$\Rightarrow$ Vom qualitativen Relationssystem zum Homomorphismus und numerischen Relationssystem
+
+```{r, echo = FALSE, out.width = "70%"}
+knitr::include_graphics("8_Abbildungen/pfm_8_messtheorie_ansätze.pdf")
+```
+
+\small
+$\Leftarrow$ Vom numerischen Relationssystem und Homomorphismus zum qualitativen Relationssystem
+
+
+# Vorbemerkungen
+\textcolor{darkblue}{Vorgehensweisen messtheoretischer Überlegungen}
+
+\small
+$\Rightarrow$ Vom qualitativen Relationssystem zum Homomorphismus und numerischen Relationssystem
+
+\footnotesize
+\justifying Im Anwendungskontext stellt man sich vor, dass ein bestimmter Gegenstandsbereich
+als qualitatives Relationssystem mit bestimmten Eigenschaften beschrieben werden kann.
+Letztlich sind die Eigenschaften empirisch zu überprüfen, dafür bietet die klassische
+Messtheorie aber keine Methodik. Man legt also ein in gewisser Weise idealisiertes
+qualitatives Relationssystem zugrunde und fragt dann, ob es einen Homomorphismus
+in ein numerisches Relationssystem, z.B. $(\mathbb{R},>)$ oder $(\mathbb{R},>,+)$ geben kann.
+Insgesamt hat dieser Ansatz sicherlich einen hohen intuitiven Appeal.
+
+\small
+$\Leftarrow$ Vom numerischen Relationssystem und Homomorphismus zum qualitativen Relationssystem
+
+\footnotesize
+Im Theoriekontext fragt man dagegen oft, wenn man ein bestimmtes numerisches Relationssystem,
+z.B. $(\mathbb{R},>)$ oder $(\mathbb{R},>,+)$ und die Existenz eines Homomorphismus zugrundelegt,
+welche Eigenschaften dann ein qualitatives Relationssystem mindestens genügen muss.
+Dementsprechend geht es einerseits darum, numerische Relationen wie $>$ oder $\ge$ oder Operationen
+wie $+$ auf den reellen Zahlen mithilfe qualitativer Relationsbegriffe zu beschreiben.
+Dies motiviert dann z.B. Beispiel die Charakterisierung von (qualitativen) Ordnungsrelationen.
+Zum anderen versucht man, nur eben jene Eigenschaften von qualitativen Relationssystemen zu fordern,
+die für den Nachweis der Existenz eines Homomorphismus in ein bestimmtes numerisches Relationssystem
+oder die so induzierte Skalenart gerade nötig sind. Der intuitive Appeal dieser
+Herangehensweise ist sicherlich geringer, die erreichbare formale Strenge und Einfachheit 
+jedoch leichter gewährleistet als im obigem Ansatz. Die Inhalte der Einheiten zu Ordinalmessungen, 
+Extensivmessungen und Differenzmessungen sollten auch vor dem Hintergrund dieses 
+zweiten Ansatzes rezipiert werden.
+
+
+# Vorbemerkungen
+\textcolor{darkblue}{Ordnungsrelationen}
+
+\footnotesize
+Ziel der Ordinalmessung ist die strukturerhaltende Repräsentation von *Ordnungsrelationen*.
+Ordnungsrelationen sind Binärrelationen und formalisieren Intuitionen von Rangfolgen wie
+z.B. "größer als", "mehr als" oder "wird präferiert über". Vertraute Ordnungsrelationen 
+sind $>$ und $\ge$ auf der Menge der reellen Zahlen.
+
+Die $>$ und $\ge$ Relationen auf den reellen Zahlen haben unterschiedliche Eigenschaften. Zum Beispiel
+ist die Relation $>$ nicht reflexiv, weil $x \cancel{>} x$, also $(x,x) \notin \, >$, aber die Relation
+$\ge$ ist reflexiv, weil $x \ge x$, also $(x,x) \in\, \ge$.
+ 
+Die Theorie der Ordnungsrelationen versucht, Eigenschaften wie die (Ir)Reflexivität 
+von $>$ und $\ge$ zu  abstrahieren und auf andere, nicht numerische Mengen, zu übertragen. 
+Je nach den konkreten Eigenschaften einer Ordnungsrelation definiert man zum Beispiel
+folgende Ordnungsrelationen (aus Roberts (1984), S. 15):
+
+```{r, echo = FALSE, out.width = "40%"}
+knitr::include_graphics("8_Abbildungen/pfm_8_order_relations.pdf")
+```
+
+Für jeder der in der Tabelle angegebenen Ordnungsrelationen können das 
+Repräsentationsproblem und das Eindeutigkeitsproblem der Ordinalmessung untersucht 
+werden. Wir betrachten hier der Einfachheit halber nur den Fall der Ordinalmessung 
+bei Vorliegen einer **strengen schwachen Ordnung** (strict weak order).
+
+
+# Vorbemerkungen
+\vspace{1mm}
+\textcolor{darkblue}{Ordinalmessungen}
+
+\footnotesize
+Ziel von Ordinalmessungen ist es, den Elementen einer Menge $M$, die in einer gegebenen
+Ordnungsrelation $R$ stehen, durch eine Funktion $f$ Zahlen in $\mathbb{R}$ so zuzuordnen, dass gilt 
+\begin{equation}
+(m,n) \in R \Leftrightarrow f(m) > f(n)  
+\end{equation}
+oder, in Abhängigkeit von $R$, auch
+\begin{equation}
+(m,n) \in R \Leftrightarrow f(m) \ge f(n).  
+\end{equation}
+Da die Struktur von $R$ durch den Homomorphismus per Definition nicht verändert wird, die Funktion
+$f$ also keine zusätzliche Information im Vergleich zu $R$ enkodiert, stellt sich die
+Frage, was durch eine Ordinalmessung bei bekannter Ordnungsrelation $R$ wissenschaftlich überhaupt gewonnen wird. 
+
+Mögliche Antworten auf diese Frage sind folgende:
+
+* \justifying $(m,n) \in R \vee (m,n) \notin R$ sind binäre Aussagen, $f(m), f(n) \in \mathbb{R}$ 
+  sind Zahlen. Die Übersetzung einer qualitativen Ordnungsrelation erlaubt es also, 
+  die Methoden der angewandten  Mathematik auf die numerisch repräsentierte 
+  Ordnungsrelation anzuwenden. Die den Elementen von $M$ zugeordneten Funktionswerte 
+  $f(m) \in \mathbb{R}$ können zum Beispiel im Sinne von abhängigen Variablen mit anderen den 
+  Elementen von $M$ zugeordneten Funktionswerten $g(m) \in \mathbb{R}$ als unabhängige 
+  Variablen statistisch in Bezug gesetzt werden.
+* In ähnlicher Weise sind Antworten auf Fragen der relativen Position eines $m \in M$ 
+  unter Umständen anhand der Menge der $f(m)$ leichter zu evaluieren. Zum Beispiel 
+  müssen für das ranghöchste oder rangniedrigste $m \in M$ lediglich 
+  $\mbox{argmin}_{m \in M}f(m)$ und $\mbox{argmax}_{m \in M}f(m)$ evaluiert und 
+  nicht alle paarweisen Vergleiche gezogen werden.
+* $(m,n) \in R \vee (m,n) \notin R$ sind $|M^2|$ Aussagen, 
+  $f(m)$ sind $|M|$ Zahlen. Die numerisch repräsentierte Ordnungsrelation 
+  kann also eventuell mit weniger Aufwand enkodiert werden.
+
+# Vorbemerkungen
+\textcolor{darkblue}{Überblick}
+
+\footnotesize
+
+
+* \justifying Wir geben in dieser Einheit einen Überblick zu messtheoretischen Überlegungen 
+  zur Repräsentation und Eindeutigkeit von strengen schwachen Ordnungen.
+  
+* \justifying Im Abschnitt **Strenge schwache Ordnungen** führen wir mit der Asymmetrie und der
+  negativen Transitivität zunächst die definierenden Eigenschaften strenger schwacher 
+  Ordungen ein. Weiterhin zeigen wir, dass strenge schwache Ordnungen auch immer
+  irreflexive und transitive Ordnungsrelationen sind.
+
+* Im Abschnitt **Repräsentation und Eindeutigkeit** zeigen wir zunächst, dass 
+  für eine strenge schwache Ordnung $R$ auf einer Menge $M$ immer ein Homomorphismus
+  in das numerische Relationssystem $(\mathbb{R}, >)$ existiert und geben damit
+  für den betrachteten Fall eine Antwort auf das Repräsentationsproblem der Messtheorie.
+  Insbesondere konstruieren wir sogar einen Homomorphismus.
+
+
+* Im gleichen Abschnitt zeigen wir dann weiterhin, dass der konstruierte Homomorphismus 
+  nicht eindeutig ist und durch die Klasse  der monoton steigenden Funktionen in 
+  weitere Homomorphismen vom betrachteten qualitatitven Relationssystem in das 
+  betrachtete numerische Relationssysteme transformiert werden kann. Die Klasse der 
+  zulässigen Transformationen von Homomorphismen sind im vorliegenden Fall also die 
+  monoton steigenden Funktionen. Damit haben wir dann auch die Ordinalskalenart der 
+  Repräsentation strenger schwacher Ordnungen nachgewiesen.
+  
+* Schließlich geben wir ein Anwendungsbeispiel aus dem Bereich der Präferenzmessung.
+
+#
+\Large
+\setstretch{3}
+\vfill
+Vorbemerkungen
+
+**Strenge schwache Ordnungen**
+
+Repräsentation und Eindeutigkeit
+
+Selbstkontrollfragen
+\vfill
+
+# Strenge schwache Ordnungen
+\small
+\begin{definition}[Asymmetrie]
+Eine Binärrelation $R$ auf einer Menge $M$ heißt \textit{asymmetrisch}, wenn
+für alle $(m,n) \in R$ gilt, dass $(n,m) \notin R$ ist.
+\end{definition}
+
+\footnotesize
+Bemerkungen und Beispiele
+
+* Die $>$ Relation auf $\mathbb{R}$ ist asymmetrisch, weil für alle $x,y\in \mathbb{R}$ gilt, dass wenn $x>y$ gilt, auch $y\cancel{>}x$ gilt.
+* Die $\ge$ Relation auf $\mathbb{R}$ ist nicht asymmetrisch, weil für $x = y$ bei $x\ge y$ nicht gilt, dass $y\cancel{\ge}x$.
+* Für $M := \{a,b,c\}$ ist die Relation
+\begin{equation}
+R := \{(a,b), (a,c), (b,c)\}
+\end{equation}
+asymmetrisch, weil gilt, dass
+\begin{align}
+\begin{split}
+(a,b) \in R & \Rightarrow (b,a) \notin R \\
+(a,c) \in R & \Rightarrow (c,a) \notin R \\
+(b,c) \in R & \Rightarrow (c,b) \notin R \\
+\end{split}
+\end{align}
+* Die (rationale, normative, idealisierte) Präferenzrelation "wird präferiert über" ist asymmetrisch.
+* Die Präferenzrelation "wird präferiert über oder wird gleichermaßen präferiert" ist nicht asymmetrisch.
+
+# Strenge schwache Ordnungen
+\small
+\begin{definition}[Negative Transitivität]
+\justifying
+Eine Binärrelation $R$ auf einer Menge $M$ heißt \textit{negativ transitiv}, wenn
+für alle $m,n,p\in M$ gilt, dass aus $(m,n) \notin R$ und $(n,p)\notin R$ folgt,
+dass $(m,p) \notin R$ ist.
+\end{definition}
+
+\footnotesize
+Bemerkungen und Beispiele
+
+* \justifying Die $>$ Relation auf $\mathbb{R}$ ist negativ transitiv, weil für alle $x,y,z\in \mathbb{R}$
+gilt, dass aus $x\cancel{>}y$ und $y\cancel{>}z$ folgt, dass $x\cancel{>}z$. Seien zum Beispiel
+$x = 1, y = 3$ und $z = 6$. Offenbar gelten dann $x \cancel{>} y$ und $y \cancel{>} z$ und auch
+$x \cancel{>} z$.
+* Für $M := \{a,b,c\}$ ist die Relation
+\begin{equation}
+R := \{(a,b), (a,c), (b,c)\}
+\end{equation}
+negativ transitiv. Hier gilt zum Beispiel, dass mit $(c,b)\notin R$ und $(b,a) \notin R$
+auch $(c,a) \notin R$ ist. Für einen vollständigen Nachweis der negativen Transitivität
+muss allerdings gezeigt werden, dass dies für alle relevanten Paare von Tupeln in $M\times M$ gilt.
+* Die (rationale, normative, idealisierte) Präferenzrelation "wird präferiert über" ist negativ transitiv.
+
+# Strenge schwache Ordnungen
+\small
+\begin{definition}[Strenge schwache Ordnung]
+$M$ sei eine Menge und $R$ sei eine Binärrelation auf $M$. $R$ heißt \textit{strenge schwache Ordnung}
+auf $M$, wenn $R$ asymmetrisch und negativ transitiv ist.
+\end{definition}
+\footnotesize
+Bemerkungen und Beispiele
+
+* \justifying Wir haben oben gesehen, dass die $>$ Relation auf $\mathbb{R}$
+  asymmetrisch und negativ transitiv ist. Die $>$ Relation ist also eine strenge
+  schwache Ordnung auf $\mathbb{R}$.
+* Wir haben oben auch gesehen, dass die $\ge$ Relation auf $\mathbb{R}$ nicht
+  asymmetrisch ist. Die $\ge$ Relation ist also keine strenge schwache Ordnung auf $\mathbb{R}$.
+* Wir haben oben angemerkt, dass eine (rationale, normative, idealisierte)
+  Präferenzrelation asymmetrisch  und negativ transitiv und damit eine strenge
+  schwache Ordnung ist.
+
+
+# Strenge schwache Ordnungen
+\small
+\begin{theorem}[Irreflexivität und Transitivität strenger schwacher Ordnung]
+\normalfont
+Eine strenge schwache Ordnung $R$ auf einer Menge $M$ ist irreflexiv und transitiv.
+\end{theorem}
+
+\footnotesize
+\underline{Beweis}
+
+Zum Nachweis der Irreflexivität ist zu zeigen, dass für alle $m \in M$ gilt, dass
+$(m,m)\notin R$ ist. Zum Beweis durch Widerspruch sei $(m,m) \in R$. Dann würde
+mit der Asymmetrie von  $R$ gelten, dass mit $(m,m) \in R$ auch $(m,m) \notin R$
+ist (um das einzusehen ersetze man in der Definition der Asymmetrie $n$ durch $m$)
+und dies ist ein Widerspruch. Also kann $(m,m) \in R$ nicht gelten und es muss $(m,m) \notin R$
+gelten. Also ist $R$ irreflexiv.
+
+Zum Nachweis der Transitivität von $R$ ist zu zeigen, dass für $(m,n) \in R$ und
+$(n,p) \in R$ auch $(m,p) \in R$ gilt. Es seien also $(m,n) \in R$ und $(n,p) \in R$.
+Zum Beweis durch Widerspruch sei $(m,p) \notin R$. Die Asymmetrie von $R$ impliziert,
+dass aus $(n,p) \in R$ folgt, dass $(p,n) \notin R$. Die negative Transitivität von
+$R$ impliziert nun für $(m,p) \notin R$ und $(p,n) \notin R$, dass $(m,n) \notin R$,
+was ein Widerspruch zur Voraussetzung $(m,n) \in R$ ist. Also kann $(m,p) \notin R$
+nicht gelten und es muss für $(m,n) \in R$ und $(n,p) \in R$ gelten, dass $(m,p) \in R$
+ist. Also ist $R$ transitiv.
+
+$\hfill \Box$
+
+#
+\Large
+\setstretch{3}
+\vfill
+Vorbemerkungen
+
+Strenge schwache Ordnungen
+
+**Repräsentation und Eindeutigkeit**
+
+Selbstkontrollfragen
+\vfill
+
+# Repräsentation und Eindeutigkeit
+\small
+\begin{theorem}[Repräsentation strenger schwacher Ordnungen]
+\justifying
+\normalfont
+$\mathcal{M} := (M,R)$ sei ein qualitatives Relationssystem mit einer endlichen Menge
+$M$ und einer Binärrelation $R$ auf $M$ und $\mathcal{N} := (\mathbb{R},>)$ sei
+ein numerische Relationssystem. Dann existiert ein Homomorphismus $f$ von
+$\mathcal{M}$ nach $\mathcal{N}$, also eine Funktion der Form
+\begin{equation}
+f : M \to \mathbb{R}, m \mapsto f(m)
+\end{equation}
+mit der Eigenschaft
+\begin{equation}
+(m,n) \in R \Leftrightarrow f(m) > f(n)
+\end{equation}
+dann und nur dann, wenn $R$ eine strenge schwache Ordnung ist.
+\end{theorem}
+
+\footnotesize
+Bemerkungen
+
+* Das Theorem beantwortet das Repräsentationsproblem für die hier betrachteten Fälle von $\mathcal{M}$ und $\mathcal{N}$.
+* Für eine strenge schwachen Ordnung auf einer endlichen Menge sind $(M,R)$ und $(\mathbb{R},>)$ also homomorph.
+
+# Repräsentation und Eindeutigkeit
+\footnotesize
+\underline{Beweis}
+
+Wir zeigen in einem ersten Schritt, dass wenn ein Homomorphismus von $(M,R)$ nach
+$(\mathbb{R},>)$ existiert, $R$ eine strenge schwache Ordnung sein muss. In einem
+zweiten Schritt zeigen wir dann, dass wenn $R$ eine strenge schwache Ordnung ist,
+ein Homomorphismus von $(M,R)$ nach $(\mathbb{R}, >)$ konstruiert werden kann.
+
+\noindent (1) *Ein Homomorphismus $f$ von $(M,R)$ nach $(\mathbb{R},>)$ existiert $\Rightarrow$ $R$ muss eine strenge schwache Ordnung sein*
+
+Wir zeigen, dass aus der Existenz eines Homomorphismus $f$ von $(M,R)$ nach
+$(\mathbb{R},>)$ die Asymmetrie und die negative Transitivität von $R$ folgen.
+
+Zum Nachweis der Asymmetrie sei $(m,n) \in R$. Dann gilt nach Voraussetzung,
+dass $f(m) > f(n)$. Da die $>$ Relation auf $\mathbb{R}$ asymmetrisch ist, gilt dann
+$f(n) \cancel{>} f(m)$ und dementsprechend auch $(n,m) \notin R$. Also folgt für
+alle $(m,n) \in R$, dass $(n,m) \notin R$ ist und damit ist $R$ asymmetrisch.
+
+Zum Nachweis der negativen Transitivität seien $(m,n)\notin R$ und $(n,p)\notin R$.
+Dann gelten $f(m)\cancel{>}f(n)$ und $f(n)\cancel{>}f(p)$. Dann folgt aber auch
+$f(m)\cancel{>}f(p)$ und dementsprechend auch $(n,p) \notin R$.
+
+Die Existenz eines Homomorphismus von $(M,R)$ nach $(\mathbb{R},>)$ impliziert also,
+dass $R$ eine strenge schwache Ordnung auf $M$ ist.
+
+# Repräsentation und Eindeutigkeit
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (2) *$R$ ist eine strenge schwache Ordnung auf $M$ $\Rightarrow$ Ein Homomorphismus $f$ kann konstruiert werden*
+
+Wir zeigen, dass für ein qualitatives Relationssystem $(M,R)$ aus einer endlichen
+Menge $M$ und einer strengen schwachen Ordnung $R$ ein Homomorphismus von $(M,R)$
+nach $(\mathbb{R},>)$ konstruiert werden kann. Wir definieren dazu eine Funktion $f$
+wie folgt:
+\begin{equation}
+f : M \to \mathbb{R}, m \mapsto f(m) := |\{q \in M|(m,q) \in R\}| 
+\end{equation}
+Der einem Element $m \in M$ zugeordnete Funktionswert $f(m)$ soll also die Kardinalität
+der Menge der $q \in M$ sein, für die gilt, dass $(m,q) \in R$.
+
+Zum Beispiel sei für $M := \{a,b,c,d\}$ die strenge schwache Ordnung
+\begin{equation}
+R := \{(a,c), (a,d), (b,c), (b,d), (c,d)\}
+\end{equation}
+definiert. Dann gilt für $f$, dass
+\begin{align}
+\begin{split}
+f(a) = 2 & \mbox{, weil } \{q \in M|(a,q) \in R\} = \{c,d\}    \\
+f(b) = 2 & \mbox{, weil } \{q \in M|(b,q) \in R\} = \{c,d\}    \\
+f(c) = 1 & \mbox{, weil } \{q \in M|(c,q) \in R\} = \{d\}      \\
+f(d) = 0 & \mbox{, weil } \{q \in M|(d,q) \in R\} = \emptyset  \\
+\end{split}
+\end{align}
+
+
+
+# Repräsentation und Eindeutigkeit
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+Wir zeigen nun, dass ein solch definiertes $f$ die Forderung $(m,n) \in R \Leftrightarrow f(m)>f(n)$ 
+erfüllt. Dazu zeigen wir erstens, dass aus $(m,n) \in R$ folgt, dass $f(m)>f(n)$ ist und zweitens, 
+dass (2) as $f(m)>f(n)$ folgt, dass $(m,n) \in R$ ist.
+
+\noindent (1) $(m,n) \in R \Rightarrow f(m)>f(n)$
+
+Es sei $(m,n) \in R$. Weil $R$ transitiv ist, impliziert $(n,q) \in R$ dann $(m,q) \in R$ für jedes $q \in M$.
+Die Anzahl der $q$ mit $(m,q) \in R$ ist also mindestens so groß wie die Anzahl der $q$ mit $(n,q) \in M$. Es gilt also
+\begin{equation}
+|\{q \in M|(m,q) \in R\}| \ge |\{q \in M|(n,q) \in R\}| \Leftrightarrow f(m) \ge f(n)
+\end{equation}
+Weiterhin gilt aber auch
+\begin{equation}
+|\{q \in M|(m,q) \in R\}| \neq |\{q \in M|(n,q) \in R\}| \Leftrightarrow f(m) \neq f(n),
+\end{equation}
+weil nach Voraussetzung $(m,n) \in R$, aber aufgrund der Irreflexitivität von $R$ dann $(n,n) \notin R$ gilt. 
+Für $n$ gilt also 
+\begin{equation}
+n \in \{q \in M|(m,q) \in R\}, \mbox{ aber } n \notin \{q \in M|(n,q) \in R\}.
+\end{equation}
+Damit können die Kardinalitäten dieser beiden Mengen nicht gleich sein. Also gilt 
+$(m,n) \in R \Rightarrow f(m)>f(n)$.
+
+
+
+# Repräsentation und Eindeutigkeit
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (2) $f(m)>f(n) \Rightarrow (m,n) \in R$
+
+Im Folgenden nutzen wir Kontrapositionsbeweise, also die logische Äquivalenz von $A \Rightarrow B$ und $\neg B \Rightarrow \neg A$, z.B.
+\begin{equation*}
+\mbox{Es regnet } (A)  \Rightarrow \mbox{ Die Strasse ist nass } (B) \Leftrightarrow \mbox{ Die Strasse ist nicht nass } (\neg B)  \Rightarrow  \mbox{ Es regnet nicht } (\neg A).
+\end{equation*}
+Um zu zeigen, dass aus $f(m)>f(n)$ folgt, dass $(m,n) \in R$ ist, zeigen wir also, dass
+umgekehrt aus $(m,n) \notin R$ folgt, dass $f(m) \cancel{>} f(n)$. Dazu halten wir
+fest, dass aus der negativen Transitivität von $R$ folgt, dass für $(m,n) \notin R$
+aus $(n,q) \notin R$ folgt, dass $(m,q) \notin R$. Andersherum impliziert dann aber
+$(m,q) \in R$, dass $(n,q) \in R$ ist und damit
+\begin{equation*}
+(m,n) \notin R \Rightarrow |\{q \in M|(n,q) \in R\}| \ge |\{q \in M|(m,q) \in R\}| \Leftrightarrow f(n) \ge f(m) \Leftrightarrow f(m) \cancel{>} f(n).
+\end{equation*}
+Damit ist bewiesen, dass aus $(m,n) \notin R$ folgt, dass $f(m) \cancel{>} f(n)$ 
+und äquivalent, dass aus $f(m)>f(n)$ folgt, dass $(m,n) \in R$ ist.
+
+
+# Repräsentation und Eindeutigkeit
+\small
+\begin{theorem}[Eindeutigkeit der Repräsentation strenger schwacher Ordnungen]
+\justifying
+\normalfont
+$\mathcal{M} := (M,R)$ sei ein qualitatives Relationssystem aus einer endlichen Menge
+$M$ und einer strengen schwachen Ordnung $R$ auf $M$, $\mathcal{N} := (\mathbb{R},>)$ sei
+ein numerische Relationssystem und es sei $f \in \mathcal{H}(\mathcal{M},\mathcal{N})$.
+Dann ist $(\mathcal{M},\mathcal{N},f)$ eine Ordinalskala.
+\end{theorem}
+
+\footnotesize
+Bemerkungen
+
+* Die Klasse der zulässigen Transformationen von $f$ sind also die monoton steigenden Funktionen.
+* Dass in diesem Fall $\mathcal{H}(\mathcal{M},\mathcal{N}) \neq \emptyset$ gilt, wurde oben nachgewiesen.
+* Strenge schwache Ordnungen sind also nicht eindeutig repräsentiert.
+
+
+# Repräsentation und Eindeutigkeit
+\footnotesize
+\underline{Beweis}
+
+\noindent (1) *Regularität der Repräsentation*
+
+Wir zeigen zunächst, dass die Repräsentation $\mathcal{M} \to \mathcal{N}$ regulär ist,
+um nachzuweisen, dass es zu jedem $f \in \mathcal{H}(\mathcal{M}, \mathcal{N})$ eine zulässige
+Transformation gibt. Dazu nutzen wir das Theorem zur Charakterisierung regulärer Skalen
+(vgl. (7) Skalenarten), welches besagt, dass eine Skala $(\mathcal{M},\mathcal{N},f)$
+dann und nur dann regulär ist, wenn für alle $g \in \mathcal{H}(\mathcal{M}, \mathcal{N})$
+und $m,n \in M$ gilt, dass aus $f(m) = f(n)$ folgt, dass $g(m) = g(n)$ ist. Sei also  
+$g \in \mathcal{H}(\mathcal{M}, \mathcal{N})$, d.h. $g$ erfüllt die Eigenschaft
+\begin{equation}
+g : M \to \mathbb{R}, m \mapsto g(m) \mbox{ mit } (m,n) \in R \Leftrightarrow g(m) > g(n).
+\end{equation}
+Sei nun weiterhin $f(m) = f(n)$. Dies impliziert, dass $(m,n) \not R$ und $(n,m) \notin R$, weil sonst
+entweder $f(m) > f(n)$ oder $f(n) > f(m)$ gelten. Wenn aber $(n,m) \notin R$ und $(m,n) \notin R$, 
+dann können auch weder $g(m) > g(n)$ noch $g(n) > g(m)$ gelten. Also muss $g(m) = g(n)$ gelten.
+
+Weil  $f \in \mathcal{H}(\mathcal{M}, \mathcal{N})$ beliebig war, gilt dies für alle
+$f \in \mathcal{H}(\mathcal{M}, \mathcal{N})$ und damit ist die Repräsentation 
+$\mathcal{M} \to \mathcal{N}$ regulär und es gibt zu jedem $g \in \mathcal{H}(\mathcal{M}, \mathcal{N})$
+eine zulässige Transformation $\phi$, so dass $g = \phi \circ f$.
+
+
+# Repräsentation und Eindeutigkeit
+\footnotesize
+\vspace{1mm}
+\underline{Beweis (fortgeführt)}
+
+\noindent (2) *Ordinalskalenart*
+
+Wir zeigen nun, dass die Menge der zulässigen Transformationen von $(\mathcal{M},\mathcal{N},f)$
+die Menge der monoton steigenden Funktionen ist. Dazu zeigen wir zunächst, dass für eine
+monoton steigende Funktion $\phi$ gilt, dass $\phi \circ f \in \mathcal{H}(\mathcal{M}, \mathcal{N})$.
+Abschließen zeigen wir, dass aus $\phi \circ f \in \mathcal{H}(\mathcal{M}, \mathcal{N})$ folgt, dass
+$\phi$ eine monoton steigende Funktion ist. Dazu halten wir zunächst noch ein einmal fest, 
+dass für die Verkettung $\varphi \circ \psi$ zweier monoton steigender Funktionen $\varphi$ und $\psi$
+gilt, dass ihre Verkettung wiederum monoton steigend ist, denn 
+\begin{equation}
+x > y \Leftrightarrow \psi(x) > \psi(y) \Leftrightarrow \varphi(\psi(x)) > \varphi(\psi(y))  \Leftrightarrow (\varphi \circ \psi) (x) > (\varphi \circ \psi) (y).
+\end{equation}
+
+(2.1) *$\phi$ ist monoton steigend $\Rightarrow$ $\phi \circ f \in \mathcal{H}(\mathcal{M}, \mathcal{N})$*
+Es gilt
+\begin{equation}
+(m,n) \in R \Leftrightarrow f(m) > f(n) \Leftrightarrow \phi(f(m)) > \phi(f(n)) \Leftrightarrow  (\phi \circ f)(m) >  (\phi \circ f)(n).
+\end{equation}
+Also ist $\phi \circ f \in \mathcal{H}(\mathcal{M}, \mathcal{N})$.
+
+(2.2) *$\phi \circ f \in \mathcal{H}(\mathcal{M}, \mathcal{N}) \Rightarrow \phi$ ist monoton steigend*
+
+Es seien $\mu := f(m) \in f(M)$ und $\nu := f(n) \in f(M)$. Dann gilt für $\phi \circ f \in \mathcal{H}(\mathcal{M}, \mathcal{N})$, dass 
+\begin{equation}
+\mu > \nu \Leftrightarrow f(m) > f(n) \Leftrightarrow m > n  \Leftrightarrow (\phi \circ f)(m) > (\phi \circ f)(n) \Leftrightarrow \phi(\mu) > \phi(\nu).
+\end{equation}
+Also ist $\phi$ monoton steigend.
+
+# Repräsentation und Eindeutigkeit
+\textcolor{darkblue}{Anwendungsbeispiel} 
+\footnotesize
+
+Es sei $M := \{\mbox{ROP},\mbox{HOTD},\mbox{ST4}, \mbox{OWK}, \mbox{1899}\}$ 
+eine Menge von Serien und es sei $R$ die durch untenstehendes Schema definierte
+"wird präferiert über" strenge schwache Ordnung auf $M$ eines Individuums. Dabei enkodiert
+eine 1 in der $m,q$-ten Zelle, dass $m$ über $q$ präferiert wird, also $(m,q) \in R$,
+eine 0 in der $m,q$-ten Zelle, dass dies nicht gilt, also $(m,q) \notin R$. Die 
+letzte Spalte zeigt die Funktionswerte des im Beweis der Repräsentation strenger 
+schwacher Ordnungen konstruierten Homomorphismus.
+
+\vspace{1mm}
+\tiny
+\center
+\begin{tabular}{l|ccccc|c}
+$m \downarrow, q \rightarrow$ & ROP   & HOTD  & ST4   & OWK & 1899  & $|\{q \in M| (m,q) \in R \}|$ \\\hline
+ROP                           & 0     & 0     & 0     & 1   & 1     & 2                             \\
+HOTD                          & 1     & 0     & 1     & 1   & 1     & 4                             \\
+ST4                           & 1     & 0     & 0     & 1   & 1     & 3                             \\
+OWK                           & 0     & 0     & 0     & 0   & 0     & 0                             \\
+1899                          & 0     & 0     & 0     & 1   & 0     & 1                             \\\hline
+\end{tabular}
+
+\footnotesize
+\flushleft
+\vspace{1mm}
+Eine Neuanordnung von Zeilen und Spalten anhand obiger Zeilensummen lässt die Ordnung klarer erkennen:
+\vspace{1mm}
+
+\tiny
+\center
+\begin{tabular}{l|ccccc|c}
+$m \downarrow, q \rightarrow$ & HOTD  & ST4   & ROP & 1899 & OWK  & $|\{q \in M| (m,q) \in R \}|$ \\\hline
+HOTD                          & 0     & 1     & 1   & 1    & 1    & 4                             \\
+ST4                           & 0     & 0     & 1   & 1    & 1    & 3                             \\
+ROP                           & 0     & 0     & 0   & 1    & 1    & 2                             \\
+1899                          & 0     & 0     & 0   & 0    & 1    & 1                             \\
+OWK                           & 0     & 0     & 0   & 0    & 0    & 0                             \\\hline
+\end{tabular}
+
+\flushleft
+\footnotesize
+\vspace{1mm}
+Für dieses Individuum gilt für alle $m,n\in M$, dass $m$ über $n$ 
+präferiert wird oder dass $n$ über $m$ präferiert wird.  
+
+
+# Repräsentation und Eindeutigkeit
+\vspace{3mm}
+\textcolor{darkblue}{Anwendungsbeispiel} 
+\footnotesize
+
+Elemente von $\mathcal{H}(\mathcal{M},\mathcal{N})$ im vorliegenden Beispiel
+
+```{r, eval = F, echo = F}
+library(latex2exp)
+graphics.off()
+dev.new()                                                                      
+par(                                                                    
+mfcol      = c(2,2),  
+family     = "sans",                                                    
+pty        = "s",                                                       
+bty        = "l",                                                       
+lwd        = 1,                                                        
+las        = 1,                                                         
+mgp        = c(2,1,0),                                                  
+font.main  = 1.2,                                                        
+cex.main   = 1.3)                                       
+m          = 1:5 
+g          = list(0:4, c(0:4)^2, 2*c(0:4) + 1, exp(0:4)) 
+label      = list(TeX("$f(m)$"), 
+                  TeX("$\\phi(f(m)), \\phi(x) := x^2$"),
+                  TeX("$\\phi(f(m)), \\phi(x) := 2x + 1$"),
+                  TeX("$\\phi(f(m)), \\phi(x) := exp(x)$"))
+
+for(i in 1:4){
+  plot(
+  m,
+  g[[i]],
+  type         = "h",                                                        
+  lwd          =  1,                                                       
+  col          = "Black",                                                    
+  ylab         = " ",                                                        
+  xlab         = "",
+  xaxt         = "n")
+  title(label[[i]])
+  axis(
+  1,
+  at           = m, 
+  labels       = c("OWK","1899", "ROP", "ST4", "HOTD"))
+}
+
+# export to pdf
+dev.copy2pdf(file = file.path("8_Abbildungen/pfm_8_anwendungsbeispiel.pdf"),width = 7, height = 7)
+```
+
+```{r, echo = FALSE, out.width = "62%"}
+knitr::include_graphics("8_Abbildungen/pfm_8_anwendungsbeispiel.pdf")
+```
+
+
+
+#
+\Large
+\setstretch{3}
+\vfill
+Vorbemerkungen
+
+Strenge schwache Ordnungen
+
+Repräsentation und Eindeutigkeit
+
+**Selbstkontrollfragen**
+\vfill
+
+# Selbstkontrollfragen
+\footnotesize
+\setstretch{2.2}
+1. Erläutern Sie zwei prinzipielle Vorgehensweisen bei messtheoretischen Überlegungen.
+2. Erläutern Sie den Begriff der Ordungsrelation.
+3. Erläutern Sie das Ziel und den wissenschaftlichen Gewinn von Ordinalmessungen.
+4. Definieren Sie den Begriff der asymmetrischen Binärrelation.
+5. Definieren Sie den Begriff der negativ transitiven Binärrelation.
+6. Definieren Sie den Begriff der strengen schwachen Ordnung.
+7. Geben Sie das Theorem zur Irreflexivität und Transitivität strenger schwacher Ordnungen wieder.
+8. Geben Sie das Theorem zur Repräsentation strenger schwacher Ordnungen wieder.
+9. Geben Sie das Theorem zur Eindeutigkeit strenger schwacher Ordnungen wieder.
+10. Erläutern Sie die Konstruktion eines Homomorphismus von einer strengen schwachen 
+    Ordnung nach $(\mathbb{R},>)$ anhand eines Beispiels aus dem Bereich der Präferenzmessung.
